@@ -1,8 +1,8 @@
 
-Functional Programming in Javascript
+Javascript 函数式编程
 =======
 
-This is a series of interactive exercises for learning Microsoft's Reactive Extensions (Rx) Library for Javascript. So why is the title "Functional Programming in Javascript"? Well it turns out that the key to learning Rx is training yourself to use functional programming to manipulate collections. Functional programming provides developers with the tools to abstract common collection operations into reusable, composable building blocks. You'll be surprised to learn that most of the operations you perform on collections can be accomplished with five simple functions:
+这是一套用于学习使用微软 Reactive Extensions(Rx) Javascript 库的交互式学习教程。那为什么标题要叫做“Javascript函数式编程”呢？因为学习 Rx 的关键，就是要训练自己去使用函数式的编程方法，进行各种集合操作。函数式编程可以让开发者把常见的集合操作，抽象成一个个可重用的，可组合的代码块。你会惊讶的发现，绝大部分集合操作都可以用下面这五个简单的函数来实现：
 
 1. map
 2. filter
@@ -10,6 +10,6 @@ This is a series of interactive exercises for learning Microsoft's Reactive Exte
 4. reduce
 5. zip
 
-Here's my promise to you: if you learn these 5 functions your code will become shorter, more self-descriptive, and more durable. Also, for reasons that might not be obvious right now, you'll learn that these five functions hold the key to simplifying asynchronous programming. Once you've finished this tutorial you'll also have all the tools you need to easily avoid race conditions, propagate and handle asynchronous errors, and sequence events and AJAX requests. In short, *these 5 functions will probably be the most powerful, flexible, and useful functions you'll ever learn.*
+我向你打包票，如果你掌握了这五个函数，你的代码会变得更精简，更有表达能力，而且更易于维护。而且，现在看起来可能不是很明显，但是实际上这五个函数式简化异步编程的关键。当你完成了这个教程之后，你就也掌握了必要的方法，可以做到避免竞态，传播和处理异步错误，处理串行的事件和 AJAX 请求等等。一句话，*这五个函数可能是你这辈子学到的所有函数中最强大，最灵活，最有用的*。
 
-##[Try it Online](http://reactivex.io/learnrx/).
+##[在线教程](http://reactivex.io/learnrx/).
