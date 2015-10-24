@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/codemirror/codemirror.css">
 	<link rel="stylesheet" href="assets/app/site.css">
-	<title>Functional Programming in Javascript</title>
+	<meta charset="UTF-8">
+	<title>Javascript 函数式编程</title>
 	<script type="text/javascript">
 		// Adds the implementation for Array.prototype.concatAll()
 		function defineConcatAll() {
@@ -45,18 +46,12 @@
 <body>
 <div class="content">
 	<div class="grab-answers">
-		<p>This is an interactive learning course with exercises you fill out right in the browser. <b>If you just want to browse the content click the button below</b>:</p>
-		<button class="green-button show-answers">Show all the answers so I can just browse.</button>
+		<p>这是一套附带练习的交互式教程，你可以直接在浏览器中完成。<b>如果你只是想看到教程内容，点击下面的按钮</b>:</p>
+		<button class="green-button show-answers">显示所有答案</button>
 	</div>
-	<h1 class="center">Functional Programming in Javascript</h1>
+	<h1 class="center">Javascript 函数式编程</h1>
 
-	<p>This is a series of interactive exercises for learning Microsoft's Reactive Extensions (Rx) Library for Javascript. 
-		So why is the title "Functional Programming in Javascript"? Well it turns out that the key to learning Rx is 
-		training yourself to use functional programming to manipulate collections.  Functional programming provides 
-		developers with the tools to abstract common collection operations into reusable, composable building blocks. 
-		You'll be surprised to learn that most of the operations you perform on collections can be accomplished with
-		<b>five simple functions</b> (some native to JavaScript and some included in the 
-		<a href="https://github.com/Reactive-Extensions/RxJS">RxJS library</a>):
+	<p>这是一套用于学习使用微软 Reactive Extensions(Rx) Javascript 库的交互式学习教程。那为什么标题要叫做“Javascript函数式编程”呢？因为学习 Rx 的关键，就是要训练自己去使用函数式的编程方法，进行各种集合操作。函数式编程可以让开发者把常见的集合操作，抽象成一个个可重用的，可组合的代码块。你会惊讶的发现，绝大部分集合操作都可以用下面这<b>五个简单的函数</b>来实现(有些函数是Javascript原生自带的，有些包含在<a href="https://github.com/Reactive-Extensions/RxJS">RxJS library</a>里面）：
 	</p>
 	<ol>
 		<li>map</li>
@@ -66,38 +61,24 @@
 		<li>zip</li>
 	</ol>
 
-	<p>Here's my promise to you: if you learn these 5 functions your code will become shorter, more self-descriptive,
-		and more durable. Also, for reasons that might not be obvious right now, you'll learn that these five functions
-		hold the key to simplifying asynchronous programming. Once you've finished this tutorial you'll also have all
-		the tools you need to easily avoid race conditions, propagate and handle asynchronous errors, and sequence
-		events and AJAX requests. In short,
-		<b>these 5 functions will probably be the most powerful, flexible, and useful functions you'll ever learn.</b>
+	<p>我向你打包票，如果你掌握了这五个函数，你的代码会变得更精简，更有表达能力，而且更易于维护。而且，现在看起来可能不是很明显，但是实际上这五个函数式简化异步编程的关键。当你完成了这个教程之后，你就也掌握了必要的方法，可以做到避免竞态，传播和处理异步错误，处理串行的事件和 AJAX 请求等等。一句话，<b>这五个函数可能是你这辈子学到的所有函数中最强大，最灵活，最有用的</b>。
 	</p>
 
-	<h2>Finishing the Interactive Exercises</h2>
+	<h2>完成交互式练习</h2>
 
-	<p>This isn't just a tutorial, it's a
-		<b>series of interactive exercises that you can fill out right in your browser!</b> It's easy to finish the
-		exercises. Just edit the code and press "Run." If the code works, a new exercise will appear below. Otherwise an
-		error will appear.
+	<p>这个教程不仅仅是一个教程，它包含了<b>一系列的交互式练习，你只需要浏览器就可以完成。</b>完成练习的步骤很简单，只需要编辑代码，然后点击“运行”，如果代码可以工作，新的练习就会出现在下面，反之则会弹出错误提示。
 	</p>
-	<p><b>Note:</b> Use the "F4" key to toggle full screen mode for each editor.</p>
+	<p><b>提示：</b>使用 "F4" 键可以打开编辑器的全屏模式</p>
 
-	<p>This tutorial may have bugs, so if you get into a weird state or you're sure you've got the right answer but
-		can't move on, just refresh your browser. If you're using a modern browser, and if you're here I assume you are,
-		the state of your exercises will be saved. If you want, you can also
-		<a href="javascript:localStorage.newState = ''; document.location.reload();">restart the lab.</a></p>
+	<p>这个教程可能存在 bug，如果你碰到了什么诡异的情况，或者你觉得已经输入了正确答案但是还是不能继续向下进行，就刷新一下浏览器试试。如果你使用的是现代浏览器（你都来到这里了，我相信你肯定不是用的IE6），练习的状态会被保存到本地。如果你需要的话，可以<a href="javascript:localStorage.newState = ''; document.location.reload();">重启这个教程.</a></p>
 
-	<p>This tutorial is on
-		<a href="https://github.com/ReactiveX/learnrx">GitHub</a>, and is asymptotically approaching
-		completion. If you'd like to add an exercise, clarify a problem description, or fix a bug feel free to
-		<a href="https://github.com/ReactiveX/learnrx/fork">fork</a> and send us a pull request. We'll
-		try and fit user-contributed exercises into a narrative.
+	<p>这个教程托管在
+		<a href="https://github.com/ReactiveX/learnrx">Github</a>上, 处于一个正在逐渐被完善的阶段，如果你想添加新的练习，完善已有练习的问题描述，或者解决某个bug，都可以<a href="https://github.com/ReactiveX/learnrx/fork">fork</a>这个项目，然后发送 pull request。我们会试着把用户贡献的问题融合到已有的教程当中。
 	</p>
 	<div class="grab-answers">
-		<p>Your answers will be saved in local storage. Use the buttons below if you want to transfer them to another machine:</p>
-		<button class="green-button get-answer">Get Answers as JSON</button>
-		<button class="blue-button set-answer">Set JSON Answers</button>
+		<p>你的答案会被存储到 local storage 当中. 如果你想把答案转移到另外的位置，使用下面的按钮进行操作:</p>
+		<button class="green-button get-answer">把答案导出为 JSON</button>
+		<button class="blue-button set-answer">导入 JSON 答案</button>
 	</div>
 
 	<h2>Working with Arrays</h2>
