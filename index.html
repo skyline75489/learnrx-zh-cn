@@ -81,28 +81,20 @@
 		<button class="blue-button set-answer">导入 JSON 答案</button>
 	</div>
 
-	<h2>Working with Arrays</h2>
+	<h2>操作数组</h2>
 
-	<p>The Array is Javascript's only collection type. Arrays are everywhere. We're going to add the five functions to
-		the Array type, and in the process make it much more powerful and useful. As a matter of fact, Array already has
-		the map, filter, and reduce functions! However we're going to reimplement these functions as a learning
-		exercise.</p>
+	<p>在 Javascript 中，数组是唯一的集合类型，几乎写任何程序都需要用到数组。接下来我们要把上面提到的五个函数，加入到数组类型，让数组类型变得更加强大易用。实际上，Javascript 的数组类型已经自带了 map，filter 和 reduce 这三个函数了！不过我们还是要把他们重新实现一遍，作为练习的一部分。</p>
 
-	<p>This section will follow a pattern. First we'll solve problems the way you probably learned in school, or on your
-		own by reading other people's code. In other words, we'll transform collections into new collections using loops
-		and statements. Then we'll implement one of the five functions, and then use it to solve the same problem again
-		<i>without</i> the loop. Once we've learned the five functions, you'll learn how to combine them to solve
-		complex problems with very little code.
-	</p>
+	<p>下面教程的过程是这样的，首先我们使用你在学校学过的方法（或者在别人代码中看到的方法）解决问题，也就是使用循环和赋值语句，把一个集合转换为另一个集合。然后我们实现上面提到的五个函数中的某一个，接下来使用这个函数<i>在不使用循环的情况下</i>解决相同的问题。当你把五个函数全部掌握之后，你会学习如何把他们结合起来，在不需要太多的代码的情况下，解决更加复杂的问题。</p>
 
-	<h3>Traversing an Array</h3>
+	<h3>遍历数组</h3>
 
 
 
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson" style="visibility: visible">
-		<h4>Exercise 1: Print all the names in an array</h4>
+		<h4>练习 1: 打印数组中所有的名字</h4>
 		<textarea class="code" rows="8" cols="80">
 			function(console) {
 				var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"],
@@ -113,8 +105,8 @@
 				}
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<span class="aside">&lt;- Click here to try your solution. If it works, you'll move on to the next exercise.</span>
+		<button class="go">运行</button>
+		<span class="aside">&lt;- 点这里来执行你的代码，如果结果正确，就可以继续下一个练习</span>
 
 		<div class="output"></div>
 
@@ -152,9 +144,7 @@
 				}
 			}
 		</pre>
-		<p class="post">Ask yourself this question: <b>did we need to specify the <i>order</i> in which the names were
-			printed?</b> If not, why do it?
-		</p>
+		<p class="post">思考这个问题： <b>我们需要确定数组打印的<i>顺序</i>吗？</b>如果不需要，那么为什么需要循环呢？</p>
 	</div>
 
 
@@ -162,8 +152,8 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 2: Use forEach to print all the names in an array</h4>
-		<p>Let's repeat the previous exercise using the forEach function.</p>
+		<h4>练习 2: 使用 forEach 打印数组中所有的名字</h4>
+		<p>我们使用 forEach 函数重做上面的练习。</p>
 
 		<textarea class="code" rows="8" cols="80">
 			function(console) {
@@ -213,11 +203,10 @@
     	</pre>
 		<div class="post">
 			<p>
-				Notice that forEach lets us specify <i>what</i> we want to happen to each item in the array, but hides <i>how</i> the array is traversed.
+				注意到一点，forEach 允许我们指明我们想要使用数组中的元素做些<i>什么</i>, 但是隐藏了数组是<i>怎么样</i>被遍历的细节.
 			</p>
-			<h3>Projecting Arrays</h3>
-			<p>Applying a function to a value and creating a new value is called a <i>projection</i>. To project one array into
-				another, we apply a projection function to each item in the array and collect the results in a new array.
+			<h3>投影数组</h3>
+			<p>对某个值执行一个函数，以得到新的值，这种操作叫做<i>投影</i>。为了把一个数组投影成另一个数组，我们对数组中的每个元素都执行一个投影函数，然后把所有的结果收集起来，组成新的数组。
 			</p>
 		</div>
 	</div>
@@ -227,9 +216,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 3: Project an array of videos into an array of {id,title} pairs using forEach()</h4>
+		<h4>练习 3: 使用 forEach 函数把一个包含 video 信息的数组投影成包含 {id,title} 对的新数组</h4>
 
-		<p>For each video, add a projected {id, title} pair to the videoAndTitlePairs array.</p>
+		<p>对于每一个 video, 添加一个 {id, title} 对到 videoAndTitlePairs 数组。</p>
 
 		<textarea class="code" rows="60" cols="80">
 			function() {
@@ -349,12 +338,12 @@
 			}
 		</pre>
 		<div class="post">
-			<p>All array projections share two operations in common:</p>
+			<p>所有的数组投影都需要完成下面两个操作</p>
 			<ol>
-				<li>Traverse the source array</li>
-				<li>Add each item's projected value to a new array</li>
+				<li>遍历源数组</li>
+				<li>把每个元素投影之后的结果添加到新数组</li>
 			</ol>
-			<p>Why not abstract away <i>how</i> these operations are carried out?</p>
+			<p>既然如此，我们为什么不直接把<i>怎么样</i>执行这些操作的细节隐藏起来呢？</p>
 		</div>
 	</div>
 
