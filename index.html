@@ -127,10 +127,10 @@
 
 				got = JSON.stringify(items.sort());
 				if(got === expected) {
-					return "Success!"
+					return "成功!"
 				}
 				else {
-					showLessonErrorMessage(expected, got, 'Note: order does not matter');
+					showLessonErrorMessage(expected, got, '注意：输出顺序没有关系');
 				}
 			}
 		</pre>
@@ -187,7 +187,7 @@
 					return "Success!"
 				}
 				else {
-					throw 'console.log did not receive all of these values: "Ben","Brian","Jafar","Matt","Priya" (note: order does not matter)'
+					throw 'console.log 没有输出下面这些值: "Ben","Brian","Jafar","Matt","Priya" (注意：顺序没有关系)'
 				}
 			}
 		</pre>
@@ -352,10 +352,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 4: Implement map()</h4>
+		<h4>练习 4: 实现 map()</h4>
 
-		<p>To make projections easier, let's add a <b>map()</b> function to the Array type. Map accepts the projection
-			function to be applied to each item in the source array, and returns the projected array.
+		<p>为了让投影操作变得更简单，我们给数组类型添加一个<b>map()</b>方法。Map 函数接受一个投影函数作为参数，对源数组的每个对象都应用这个函数，然后返回投影后的数组。
 		</p>
 
 		<textarea class="code" rows="20" cols="80">
@@ -393,10 +392,10 @@
 				result = arr.map(function(x) { return x + 1});
 
 				if (JSON.stringify(arr) !== "[1,2,3]") {
-					throw "Whoa! You changed the input array. Map never changes the value of the array passed in. It creates a new array with the results of applying the projection function to every value in the old array."
+					throw "喔! 你改变了源数组的值。Map不应该改变输入数组的值，它应该对输入数组的每个元素执行投影函数之后，返回一个新的数组"
 				}
 				else if(JSON.stringify(result) !== '[2,3,4]') {
-					throw 'Expected that [1,2,3].map(function(x) { return x + 1}) would equal [2,3,4].'
+					throw '[1,2,3].map(function(x) { return x + 1}) 结果应该为 [2,3,4].'
 				}
 			}
 		</pre>
@@ -420,10 +419,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 5: Use map() to project an array of videos into an array of {id,title} pairs</h4>
+		<h4>练习 5: 使用 map() 把一个 videos 数组投影成 {id,title} 对数组</h4>
 
-		<p>Let's repeat the exercise of collecting {id, title} pairs for each video in the newReleases array, but <b>this
-			time we'll use our map function.</b>
+		<p>我们来重复上面的收集 {id, title} 对得到一个新数组的练习，<b>这次使用 map 函数来完成</b>。
 		</p>
 
 		<textarea class="code" rows="60" cols="80">
@@ -534,12 +532,11 @@
 			}
 		</pre>
 		<div class="post">
-			<p>Notice that map allows us to specify <i>what</i> projection we want to apply to an array, but hides
-				<i>how</i> the operation is carried out.
+			<p>注意到，map允许我们指明我们想要对数组施加<i>什么</i>投影操作, 但是隐藏了这个操作是
+				<i>怎么样</i>被执行的细节。
 			</p>
-			<h3>Filtering Arrays</h3>
-			<p>Like projection, filtering an array is also a very common operation. To filter an array we apply a test to each item
-				in the array and collect the items that pass into a new array.
+			<h3>过滤数组</h3>
+			<p>和投影类似，过滤数组也是很常见的操作。过滤一个数组是这样的过程，我们对数组中的每个元素都执行一个检查，然后把所有通过这个检查的元素收集成一个新的数组。
 			</p>
 		</div>
 	</div>
@@ -549,10 +546,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 6: Use forEach() to collect only those videos with a rating of 5.0</h4>
+		<h4>练习 6: 使用 forEach() 收集那些评分（rating) 为 5.0 的 video</h4>
 
-		<p>Use forEach() to loop through the videos in the newReleases array and, if a video has a rating of 5.0, add it to
-			the videos array.
+		<p>使用 forEach() 遍历 newReleases 数组, 如果一个 video 评分为 5.0, 就把它添加到 videos 数组.
 		</p>
 
 		<textarea class="code" rows="60" cols="80">
@@ -600,8 +596,8 @@
 				return videos;
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -671,12 +667,12 @@
 		</pre>
 
 		<div class="post">
-			<p>Notice that, like map(), <b>every filter() operation shares some operations in common</b>:</p>
+			<p>注意，和 map() 类似, <b>每个 filter() 操作也都要完成下面的操作</b>:</p>
 			<ol>
-				<li>Traverse the array</li>
-				<li>Add objects that pass the test to a new array</li>
+				<li>遍历数组</li>
+				<li>把通过测试的元素加入到新数组</li>
 			</ol>
-			<p>Why not abstract away how these operations are carried out?</p>
+			<p>为什么我们不把这些实现细节也隐藏起来呢?</p>
 		</div>
 	</div>
 
