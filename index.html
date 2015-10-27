@@ -536,7 +536,7 @@
 				<i>怎么样</i>被执行的细节。
 			</p>
 			<h3>过滤数组</h3>
-			<p>和投影类似，过滤数组也是很常见的操作。过滤一个数组是这样的过程，我们对数组中的每个元素都执行一个检查，然后把所有通过这个检查的元素收集成一个新的数组。
+			<p>和投影类似，过滤（filter）数组也是很常见的操作。过滤一个数组是这样的过程，我们对数组中的每个元素都执行一个检查，然后把所有通过这个检查的元素收集成一个新的数组。
 			</p>
 		</div>
 	</div>
@@ -681,11 +681,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 7: Implement filter()</h4>
+		<h4>练习 7: 实现 filter()</h4>
 
-		<p>To make filtering easier, let's add a filter() function to the Array type. The filter() function accepts a <i>predicate</i>.
-			A predicate is a function that accepts an item in the array, and returns a boolean indicating whether the item
-			should be retained in the new array.</p>
+		<p>为了让过滤操作更简单, 我们给数组类型添加一个 filter()函数。 filter() 接受一个<i>断言</i>作为参数。
+			断言是这样一个函数： 它以数组中的一个元素作为参数，返回一个布尔值，表明这个元素应不应该被添加到新数组中。</p>
 
 		<textarea class="code" rows="20" cols="80">
 			Array.prototype.filter = function(predicateFunction) {
@@ -720,10 +719,10 @@
 				result = arr.filter(function(x) { return x > 2});
 
 				if (JSON.stringify(arr) !== "[1,2,3]") {
-					throw "Whoa! You changed the input array. Filter never changes the value of the array passed in. It creates a new array that includes only those items in the old array that pass the predicate function."
+					throw "喔! 你改变了源数组的值。Filter 不应该改变输入数组的值，它应该对输入数组的每个元素执行投影函数之后，返回一个新的数组"
 				}
 				else if(JSON.stringify(result) !== '[3]') {
-					throw 'Expected that [1,2,3].filter(function(x) { return x > 2}) would equal [3].'
+					throw '[1,2,3].filter(function(x) { return x > 2}) 结果应该为 [3].'
 				}
 			}
 		</pre>
@@ -741,8 +740,7 @@
 
 			// JSON.stringify([1,2,3].filter(function(x) { return x > 2})) === "[3]"
 		</pre>
-		<p class="post">Like map(), filter() lets us express <i>what</i> data we want without requiring us to specify <i>how</i>
-			we want to collect the data.</p>
+		<p class="post">和 map() 类似, filter() 让我们选择想要<i>什么</i>数据，但是不要求我们指明<i>怎么样</i>去收集这些数据。</p>
 	</div>
 
 
@@ -750,8 +748,8 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h3>Query Data by Chaining Method Calls</h3>
-		<h4>Exercise 8: Chain filter and map to collect the ids of videos that have a rating of 5.0</h4>
+		<h3>使用链式调用来查询数据</h3>
+		<h4>练习 8: 链式调用 filter 和 map，收集 video 当中 rating 为 0.5 的那些 video 的 id。</h4>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var newReleases = [
@@ -871,9 +869,8 @@
 			}
 		</pre>
 
-		<p class="post">Chaining together map() and filter() gives us a lot of expressive power. These high level functions
-			let us express <i>what</i> data we want, but leave the underlying libraries a great deal of flexibility in terms
-			of <i>how</i> our queries are executed.</p>
+		<p class="post">把 map() 和 filter() 结合在一起调用，让我们的代码变得富有表现力。 这些高层函数让我们表达我们想要
+<i>什么</i>数据， 使得下层库在处理<i>怎么样</i>执行查询操作时可以有很大的灵活性。</p>
 	</div>
 
 
@@ -881,15 +878,12 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h3>Querying Trees</h3>
-		<p>Sometimes, in addition to flat arrays, we need to query trees. Trees pose a challenge because we need to flatten them
-			into arrays in order to apply filter() and map() operations on them. In this section we'll define a concatAll()
-			function that we can combine with map() and filter() to query trees.</p>
+		<h3>查询树</h3>
+		<p>有时候，除了数组之外，我们还需要对树状数据结构进行查询。树带来了一个新的问题，因为我们需要首先把数展开成数组，然后才能使用 filter() 和 map() 操作。在这个部分的练习中，我们定义了 concatAll() 函数，结合它我们就可以使用 map() 和 filter 对树进行查询了。</p>
 
-		<h4>Exercise 9: Flatten the movieLists array into an array of video ids</h4>
+		<h4>练习 9: 把 movieLists 数组展开成包含 video 的 id 的数组</h4>
 
-		<p>Let's start by using two nested forEach loops to collect the id of every video in the two-dimensional movieLists
-			array.</p>
+		<p>首先，我们使用两层嵌套的 forEach 循环，把二维数组 movieLists 中所有 video 的 id 收集起来。</p>
 
 		<textarea class="code" rows="60" cols="80">
 			function() {
@@ -1024,10 +1018,7 @@
 			}
 		</pre>
 
-		<p class="post">Flattening trees with nested forEach expressions is easy because we can explicitly add items to the
-			array. Unfortunately it's <i>exactly</i> this type of low-level operation that we've been trying to abstract
-			away with functions like map() and filter(). Can we define a function that's abstract enough to express our <i>intent</i>
-			to flatten a tree, without specifying too much information about <i>how</i> to carry out the operation?</p>
+		<p class="post">用 forEach 来展开数组很简单，因为我们可以显式地把元素添加到新数组中。可惜，这恰恰就是我们想通过类似map()，filter()这种函数来封装起来的底层操作。我们能不能定义一个方法，使它足够抽象，允许我们指明想要展开一个树的<i>意图</i>，但是不需要指明<i>怎么样</i>完成这个操作？</p>
 	</div>
 
 
