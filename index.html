@@ -1026,11 +1026,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 10: Implement concatAll()</h4>
+		<h4>练习 10: 实现 concatAll()</h4>
 
-		<p>Let's add a concatAll() function to the Array type. The concatAll() function iterates over each sub-array in the
-			array and collects the results in a new, flat array. Notice that <b>the concatAll() function expects each item in
-				the array to be another array.</b>
+		<p>我们给数组类型增加一个 concatAll() 方法。 concatAll() 会遍历数组中的每一个子数组，把它们的结果收集到一个新的，展开的数组当中。 注意<b> concatAll() 方法需要数组中的每一个元素也都是一个数组</b>。
 		</p>
 
 		<textarea class="code" rows="20" cols="80">
@@ -1081,8 +1079,7 @@
 			// JSON.stringify([ [1,2,3], [4,5,6], [7,8,9] ].concatAll()) === "[1,2,3,4,5,6,7,8,9]"
 			// [1,2,3].concatAll(); // throws an error because this is a one-dimensional array
 		</pre>
-		<p class="post">concatAll is a very simple function, so much so that it may not be obvious yet how it can be combined
-			with map() to query a tree. Let's try an example...</p>
+		<p class="post">concatAll 函数非常简单，简单到你可能都不太会注意到它如何与 map() 结合起来，进行树的查询，我们来举一个例子。</p>
 	</div>
 
 
@@ -1090,7 +1087,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 11: Use map() and concatAll() to project and flatten the movieLists into an array of video ids</h4>
+		<h4>练习 11: 使用 map() 和 concatAll() 对 movieLists 进行投影和展开，获取包含所有 video 的 id 的数组</h4>
 
 		<p>Hint: use two nested calls to map() and one call to concatAll().</p>
 		<textarea class="code" rows="60" cols="80">
@@ -1227,8 +1224,7 @@
 			}
 		</pre>
 
-		<p class="post">Wow! <b>Great work.</b> Mastering the combination of map() and concatAll() is key to effective
-			functional programming. You're half way there! Let's try a more complicated example...</p>
+		<p class="post"><b>干得漂亮！</b> 掌握 map() 和 concatAll() 的结合使用对于高效率的函数式编程而言十分重要。你已经迈出了坚实的一步！我们来尝试一个更加复杂的例子。</p>
 	</div>
 
 
@@ -1236,25 +1232,18 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 12: Retrieve id, title, and a 150x200 box art url for every video</h4>
+		<h4>练习 12: 获取每个 video 的 id， title 和 150x200 大小的 box art url</h4>
 
-		<p>You've managed to flatten a tree that's two levels deep, let's try for three! Let's say that instead of a single
-			boxart url on each video, we had a collection of boxart objects, each with a different size and url. Create a
-			query that selects {id, title, boxart} for every video in the movieLists. This time though, the boxart property
-			in the result will be the url of the boxart object with dimensions of 150x200px. Let's see if you can solve this
-			problem with map(), concatAll(), and filter().</p>
+		<p>你已经成功地展开过一个两层深的树了，我们来试一下三层的。对于每个 video，我们不是只有一个 boxart url，而是有一组 boxart 对象，每个对象里包含了不同的大小和 url。你需要做这样一个查询，从 movieLists 中把每个 video 的 {id, title, boxart} 筛选出来，而且这次结果中的 boxart url 需要来自具有 150x200px 尺寸的 boxart 对象。试着使用 map()，concatAll() 和 filter() 解决这个问题。</p>
 		<a name="indexers"></a>
 
-		<p><b>There's just more one thing: you <u>can't</u> use indexers.</b> In other words, this is
-			<span style="color:red">illegal</span>:</p>
+		<p><b>还有一件事：你<u>不能</u>使用数组下标。</b>也就是说这样的写法是
+			<span style="color:red">非法的</span>:</p>
 			<pre>
 				var itemInArray = movieLists<span style="color:red">[0]</span>;
 			</pre>
 
-		<p>Furthermore, <b>you're not allowed to use indexers in any of the remaining exercises</b> unless you're
-			implementing one of the five functions. There is a very good reason for this restriction, and that reason will
-			eventually be explained. For now, you'll simply have to accept it on faith that this restriction serves a
-			purpose. :-)</p>
+		<p>更进一步的，<b>在接下来的所有练习中你都不能使用下标</b>，除非你是在实现开始提到的那五个函数中的某一个。这样做是有很大的好处的，具体的好处我们会在后面解释清楚。现在你只需要遵守这个规定，并且相信这样做的目的是好的就可以了 :-)</p>
 
 		<textarea class="code" rows="60" cols="80">
 			function() {
@@ -1447,9 +1436,8 @@
 
 			}
 		</pre>
-		<p class="post">Fantastic job! Now you've learned to use concatAll() alongside map() and filter() to queries trees.
-			Notice that <b>map() and concatAll() are very commonly chained together.</b> Let's create a small helper function
-			to help us with this common pattern.</p>
+		<p class="post">精彩！现在你已经学会了使用 concatAll()， map() 以及 filter() 进行树的查询。
+			注意到<b>map() 和 concatAll() 经常会一起使用。</b>我们来加入一个小的助手函数来处理这种场景。</p>
 	</div>
 
 
@@ -1457,11 +1445,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 13: Implement concatMap()</h4>
+		<h4>练习 13: 实现 concatMap()</h4>
 
-		<p>Nearly every time we flatten a tree we chain map() and concatAll(). Sometimes, if we're dealing with a tree
-			several levels deep, we'll repeat this combination many times in our code. To save on typing, let's create a
-			concatMap function that's just a map operation, followed by a concatAll.</p>
+		<p>几乎每次我们需要展开一个树的时候，都会链接使用 map() 和 concatAll()。有些时候，如果我们需要处理的树有好几层深，我们就需要在代码中重复好几次这种写法。为了让代码更简单，我们加入 concatMap 方法，它就是一个 map 操作, 然后紧接一个 concatAll。</p>
 		<textarea class="code" rows="20" cols="80">
 			Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
 				return this.
@@ -1534,8 +1520,7 @@
 		</pre>
 
 
-		<p class="post">Now, instead of using map().concatAll() to flatten a tree, we can just use concatMap helper
-			function.</p>
+		<p class="post">从现在起，在展开树的时候不要再使用 map().concatAll()，我们可以直接使用 concatMap 函数。</p>
 	</div>
 
 
