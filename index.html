@@ -1528,10 +1528,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 14: Use concatMap() to retrieve id, title, and 150x200 box art url for every video</h4>
+		<h4>练习 14: 使用concatMap()去检索每一个视频的id，title，boxarts url。</h4>
 
-		<p>Let's repeat the exercise we just performed. However this time we'll simplify the code by replacing the
-			map().concatAll() calls with concatMap().</p>
+		<p>让我们再来做一下刚刚做过的那个练习。然而这一次我们将用concatMap()来替换map().concatApp()来简化代码。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -1713,8 +1712,7 @@
 				  });
 			}
 		</pre>
-		<p class="post">It's a very common pattern to see several nested concatMap operations, with the last operation being a
-			map. You can think of this pattern as the functional version of a nested forEach.</p>
+		<p class="post">将最后一个运算变为map，这将是一个去访问几个嵌套的concatMap运算的非常常见的方式。你可以把这种方式当做一个嵌套的forEach的函数版本。</p>
 	</div>
 
 
