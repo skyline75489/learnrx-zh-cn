@@ -1720,19 +1720,11 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h3>Reducing Arrays</h3>
-		<p>Sometimes we need to perform an operation on more than one item in the array <i>at the same time</i>. For example,
-			let's say we need to find the largest integer in an array. We can't use a filter() operation, because it only
-			examines one item at a time. To find the largest integer we need to compare items in the array to each other.
+		<h3>缩减数组</h3>
+		<p>有时我们需要<i>同时</i>对数组中很多项进行操作。举例，我们需要找到数组中的最大整型值。我们不能使用filter()，因为filter()每次只对一项进行检查。为了找到这个最大整型值，我们需要互相比较数组中的每一项。
 		</p>
-		<p>One approach could be to select an item in the array as the <i>assumed</i> largest number (perhaps the first item),
-			and then compare that value to every other item in the array. Each time we come across a number that was larger than
-			our assumed largest number, we'd replace it with the larger value, and continue the process until the entire array
-			was traversed.</p>
-		<p>If we replaced the specific size comparison with a closure, we could write a function that handled the array
-			traversal process for us. At each step our function would apply the closure to the last value and the current value
-			and use the result as the last value the next time. Finally we'd be left with only one value. This process is known
-			as <i>reducing</i> because we reduce many values to a single value.</p>
+		<p>先<i>假设</i>某一项是最大值（可能是第一项)，然后再把它和数组中其余所有项进行对比。每一次我们找到一个比假想值大的数时，就把这个假想值替换为我们找到的这个值，直到我们遍历完整个数组。</p>
+		<p>如果我们用闭包来替换特定大小的比较，我们需要写一个函数来遍历数组。每一步我们的函数将在当前的值和最后的值运用闭包 ，下一次就将结果作为最后的值。最后我们只剩下一个值。这个过程被称为<i>缩减</i>，因为我们将很多的值变为了一个值。</p>
 
 		<h4>Exercise 15: Use forEach to find the largest box art</h4>
 
