@@ -589,9 +589,9 @@
 				],
 				videos = [];
 
-				// ------------ INSERT CODE HERE! -----------------------------------
-				// Use forEach function to accumulate every video with a rating of 5.0
-				// ------------ INSERT CODE HERE! -----------------------------------
+				// ------------ 在这里写下答案 -----------------------------------
+				// 使用 forEach 方法拿到所有 rating 为 5.0 的 video。
+				// ------------ 在这里写下答案 -----------------------------------
 
 				return videos;
 			}
@@ -683,19 +683,18 @@
 	<div class="lesson">
 		<h4>练习 7: 实现 filter()</h4>
 
-		<p>为了让过滤操作更简单, 我们给数组类型添加一个 filter()函数。 filter() 接受一个<i>断言</i>作为参数。
+		<p>为了让过滤操作更简单, 我们给数组类型添加一个 filter() 函数。 filter() 接受一个<i>断言</i>作为参数。
 			断言是这样一个函数： 它以数组中的一个元素作为参数，返回一个布尔值，表明这个元素应不应该被添加到新数组中。</p>
 
 		<textarea class="code" rows="20" cols="80">
 			Array.prototype.filter = function(predicateFunction) {
 				var results = [];
 				this.forEach(function(itemInArray) {
-					// ------------ INSERT CODE HERE! ----------------------------
-					// Apply the predicateFunction to each item in the array.
-					// If the result is truthy, add the item to the results array.
-					// Note: remember you can add items to the array using the array's
-					// push() method.
-					// ------------ INSERT CODE HERE! ----------------------------
+					// ------------ 在这里写下答案 ----------------------------
+					// 对数组中的每个元素执行 predicateFunction 方法。如果返回为 true 就
+					// 把它添加到结果数组中。
+					// 注意: 你可以使用 push() 方法把元素放到数组中。
+					// ------------ 在这里写下答案 ----------------------------
 				});
 
 				return results;
@@ -787,12 +786,10 @@
 					}
 				];
 
-				// ------------ INSERT CODE HERE! -----------------------------------
-				// Chain the filter and map functions to select the id of all videos
-				// with a rating of 5.0.
-
-				return newReleases // Complete this expression
-				// ------------ INSERT CODE HERE! -----------------------------------
+				// ------------ 在这里写下答案 -----------------------------------
+				// 结合 filter 和 map 方法，拿到所有 rating 为 5.0 的 video 的 id。
+				return newReleases // 完成这个语句
+				// ------------ 在这里写下答案 -----------------------------------
 			}
 		</textarea>
 		<button class="go">运行</button>
@@ -854,9 +851,9 @@
 						}
 					];
 
-				// ------------   INSERT CODE HERE!  -----------------------------------
-				// Chain the filter and map functions to select the id of all videos
-				// with a rating of 5.0.
+				// ------------   在这里写下答案   -----------------------------------
+				// 结合 filter 和 map 方法，拿到所有 rating 为 5.0 的 video 的 id。
+
 
 				return newReleases.
 					filter(function(video) {
@@ -865,7 +862,7 @@
 					map(function(video) {
 						return video.id;
 					});
-				// ------------   INSERT CODE HERE!  -----------------------------------
+				// ------------   在这里写下答案  -----------------------------------
 			}
 		</pre>
 
@@ -933,10 +930,9 @@
 				],
 				allVideoIdsInMovieLists = [];
 
-				// ------------   INSERT CODE HERE!  -----------------------------------
-				// Use two nested forEach loops to flatten the movieLists into a list of
-				// video ids.
-				// ------------   INSERT CODE HERE!  -----------------------------------
+				// ------------   在这里写下答案  -----------------------------------
+				// 使用两层嵌套的 forEach 循环，把 movieLists 打平成一个 video id 的列表。
+				// ------------   在这里写下答案  -----------------------------------
 
 				return allVideoIdsInMovieLists;
 
@@ -1035,9 +1031,9 @@
 			Array.prototype.concatAll = function() {
 				var results = [];
 				this.forEach(function(subArray) {
-					// ------------ INSERT CODE HERE! ----------------------------
-					// Add all the items in each subArray to the results array.
-					// ------------ INSERT CODE HERE! ----------------------------
+					// ------------ 在这里写下答案 ----------------------------
+					// 把每个子数组中元素添加到结果数组当中。
+					// ------------ 在这里写下答案 ----------------------------
 				});
 
 				return results;
@@ -1089,7 +1085,7 @@
 	<div class="lesson">
 		<h4>练习 11: 使用 map() 和 concatAll() 对 movieLists 进行投影和展开，获取包含所有 video 的 id 的数组</h4>
 
-		<p>Hint: use two nested calls to map() and one call to concatAll().</p>
+		<p>提示: 使用两个嵌套的 map() 和一个 concatAll()。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -1137,9 +1133,9 @@
 						}
 					];
 
-				// ------------   INSERT CODE HERE!  -----------------------------------
-				// Use map and concatAll to flatten the movieLists in a list of video ids.
-				// ------------   INSERT CODE HERE!  -----------------------------------
+				// ------------  在这里写下答案  -----------------------------------
+				// 使用 map 和 concatAll 把 movieLists 打平成 video id 的数组。
+				// ------------  在这里写下答案  -----------------------------------
 
 				return movieLists // Complete this expression!
 
@@ -1209,9 +1205,8 @@
 						}
 					];
 
-				// ------------   INSERT CODE HERE!  -----------------------------------
-				// Use map and concatAll to flatten the movieLists in a list of video ids.
-				// ------------   INSERT CODE HERE!  -----------------------------------
+				// ------------  在这里写下答案  -----------------------------------
+				// 使用 map 和 concatAll 把 movieLists 打平成 video id 的数组。
 
 				return movieLists.
 				  map(function(movieList) {
@@ -1221,6 +1216,7 @@
 				  }).
 				  concatAll();
 
+				// ------------  在这里写下答案  -----------------------------------
 			}
 		</pre>
 
@@ -1307,7 +1303,7 @@
 					];
 
 
-				// Use one or more map, concatAll, and filter calls to create an array with the following items
+				// 使用一个或者多个 map，concatAll，filter 方法拿到一个有下列元素的数组
 				// [
 				//	 {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg" },
 				//	 {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg" },
@@ -1315,7 +1311,7 @@
 				//	 {"id": 70111470,"title": "Die Hard","boxart":"http://cdn-0.nflximg.com/images/2891/DieHard150.jpg" }
 				// ];
 
-				return movieLists // Complete this expression!
+				return movieLists // 完成这个语句
 
 			}
 		</textarea>
@@ -1338,7 +1334,7 @@
 					].sortBy(function(v) { return v.id }));
 
 				if (str.indexOf('[0]') !== -1) {
-					throw "You're not allowed to index into the array. You might be creating the object too early. Instead of using an indexer to get the boxart out of the array, try adding a call to map() and creating the object inside the projection function.";
+					throw "你不能使用数组下标。你可能创建对象过早了。与其使用数组下标来从数组中获取 boxart，试着使用 map() 方法在投影函数中创建新的对象";
 				}
 
 				videos = videos.sortBy(function(v) { return v.id });
@@ -1410,7 +1406,7 @@
 					];
 
 
-				// Use one or more map, concatAll, and filter calls to create an array with the following items
+				// 使用一个或者多个 map，concatAll，filter 方法拿到一个有下列元素的数组
 				// [
 				//     {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg" },
 				//     {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg" },
