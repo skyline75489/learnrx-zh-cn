@@ -164,7 +164,7 @@
 				});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 
 		<div class="output"></div>
 
@@ -258,19 +258,19 @@
 				],
 				videoAndTitlePairs = [];
 
-				// ------------ INSERT CODE HERE! -----------------------------------
-				// Use forEach function to accumulate {id, title} pairs from each video.
-				// Put the results into the videoAndTitlePairs array using the Array's
-				// push() method. Example: videoAndTitlePairs.push(newItem);
-				// ------------ INSERT CODE HERE! -----------------------------------
+				// ------------ 在这里写下答案 -----------------------------------
+				// 使用 forEach 函数从 video 中拿到 {id, title}，使用 push() 方法把
+				// 结果放到 videoAndTitlePairs 数组中。
+				// 例如 videoAndTitlePairs.push(newItem);
+				// ------------ 在这里写下答案 -----------------------------------
 
 
 				return videoAndTitlePairs;
 			}
 		</textarea>
 
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 
 		<div class="output"></div>
 
@@ -362,11 +362,11 @@
 				var results = [];
 				this.forEach(function(itemInArray) {
 
-					// ------------ INSERT CODE HERE! ----------------------------
-					// Apply the projectionFunction to each item in the array and add
-					// each result to the results array.
-					// Note: you can add items to an array with the push() method.
-					// ------------ INSERT CODE HERE! ----------------------------
+					// ------------ 在这里写下答案 ----------------------------
+					// 对数组中的每一个元素使用 projectionFunction 方法，并把结果放到
+					// 一个数组里面。
+					// 注意: 你可以使用 push() 方法把元素放到数组中。
+					// ------------ 在这里写下答案 ----------------------------
 
 				});
 
@@ -376,8 +376,8 @@
 			// JSON.stringify([1,2,3].map(function(x) { return x + 1; })) === '[2,3,4]'
 		</textarea>
 
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 
 		<div class="output"></div>
 
@@ -392,7 +392,7 @@
 				result = arr.map(function(x) { return x + 1});
 
 				if (JSON.stringify(arr) !== "[1,2,3]") {
-					throw "喔! 你改变了源数组的值。Map不应该改变输入数组的值，它应该对输入数组的每个元素执行投影函数之后，返回一个新的数组"
+					throw "喔! 你改变了源数组的值。Map 不应该改变输入数组的值，它应该对输入数组的每个元素执行投影函数之后，返回一个新的数组"
 				}
 				else if(JSON.stringify(result) !== '[2,3,4]') {
 					throw '[1,2,3].map(function(x) { return x + 1}) 结果应该为 [2,3,4].'
@@ -461,16 +461,16 @@
 					}
 				];
 
-				// ------------ INSERT CODE HERE! -----------------------------------
-				// Use map function to accumulate {id, title} pairs from each video.
-				return newReleases.map // finish this expression!
-				// ------------ INSERT CODE HERE! -----------------------------------
+				// ------------ 在这里写下答案 -----------------------------------
+				// 使用 map 方法拿到每个 video 当中的 {id, title}。
+				return newReleases.map // 完成这个语句。
+				// ------------ 在这里写下答案 -----------------------------------
 
 			}
 		</textarea>
 
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -532,7 +532,7 @@
 			}
 		</pre>
 		<div class="post">
-			<p>注意到，map允许我们指明我们想要对数组施加<i>什么</i>投影操作, 但是隐藏了这个操作是
+			<p>注意到，map 允许我们指明我们想要对数组施加<i>什么</i>投影操作, 但是隐藏了这个操作是
 				<i>怎么样</i>被执行的细节。
 			</p>
 			<h3>过滤数组</h3>
@@ -672,7 +672,7 @@
 				<li>遍历数组</li>
 				<li>把通过测试的元素加入到新数组</li>
 			</ol>
-			<p>为什么我们不把这些实现细节也隐藏起来呢?</p>
+			<p>为什么我们不把这些实现细节也隐藏起来呢？</p>
 		</div>
 	</div>
 
@@ -704,8 +704,8 @@
 			// JSON.stringify([1,2,3].filter(function(x) { return x > 2})) === "[3]"
 		</textarea>
 
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -795,8 +795,8 @@
 				// ------------ INSERT CODE HERE! -----------------------------------
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -942,8 +942,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -1018,7 +1018,7 @@
 			}
 		</pre>
 
-		<p class="post">用 forEach 来展开数组很简单，因为我们可以显式地把元素添加到新数组中。可惜，这恰恰就是我们想通过类似map()，filter()这种函数来封装起来的底层操作。我们能不能定义一个方法，使它足够抽象，允许我们指明想要展开一个树的<i>意图</i>，但是不需要指明<i>怎么样</i>完成这个操作？</p>
+		<p class="post">用 forEach 来展开数组很简单，因为我们可以显式地把元素添加到新数组中。可惜，这恰恰就是我们想通过类似 map()，filter() 这种函数来封装起来的底层操作。我们能不能定义一个方法，使它足够抽象，允许我们指明想要展开一个树的<i>意图</i>，但是不需要指明<i>怎么样</i>完成这个操作？</p>
 	</div>
 
 
@@ -1046,8 +1046,8 @@
 			// JSON.stringify([ [1,2,3], [4,5,6], [7,8,9] ].concatAll()) === "[1,2,3,4,5,6,7,8,9]"
 			// [1,2,3].concatAll(); // throws an error because this is a one-dimensional array
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -1319,8 +1319,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output">
 		</div>
 
@@ -1473,8 +1473,8 @@
 				return JSON.stringify(allWords) === '["cero","rien","zero","uno","un","one","dos","deux","two"]';
 			*/
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Implement concatAll
@@ -1528,9 +1528,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>练习 14: 使用concatMap()去检索每一个视频的id，title，boxarts url。</h4>
+		<h4>练习 14: 使用 concatMap() 去检索每一个视频的 id，title，boxarts url。</h4>
 
-		<p>让我们再来做一下刚刚做过的那个练习。然而这一次我们将用concatMap()来替换map().concatApp()来简化代码。</p>
+		<p>让我们再来做一下刚刚做过的那个练习。然而这一次我们将用 concatMap() 来替换 map().concatAll() 来简化代码。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -1605,8 +1605,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -4938,7 +4938,7 @@
 			}
 		</textarea>
 
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 
 		<label for="inputName">Enter Keys</label>
 		<input type="text" class="inputName">
