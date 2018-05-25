@@ -1137,12 +1137,12 @@
 				// 使用 map 和 concatAll 把 movieLists 打平成 video id 的数组。
 				// ------------  在这里写下答案  -----------------------------------
 
-				return movieLists // Complete this expression!
+				return movieLists // 完成这个语句
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 
 		<pre class="verifier">
@@ -1334,7 +1334,7 @@
 					].sortBy(function(v) { return v.id }));
 
 				if (str.indexOf('[0]') !== -1) {
-					throw "你不能使用数组下标。你可能创建对象过早了。与其使用数组下标来从数组中获取 boxart，试着使用 map() 方法在投影函数中创建新的对象";
+					throw "你不能使用数组下标。你可能过早地创建了对象。与其使用数组下标来从数组中获取 boxart，试着使用 map() 方法在投影函数中创建新的对象";
 				}
 
 				videos = videos.sortBy(function(v) { return v.id });
@@ -1516,7 +1516,7 @@
 		</pre>
 
 
-		<p class="post">从现在起，在展开树的时候不要再使用 map().concatAll()，我们可以直接使用 concatMap 函数。</p>
+		<p class="post">从现在起，在展开树的时候不需要再使用 map().concatAll()，我们可以直接使用 concatMap 函数。</p>
 	</div>
 
 
@@ -1524,9 +1524,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>练习 14: 使用 concatMap() 去检索每一个视频的 id，title，boxarts url。</h4>
+		<h4>练习 14: 使用 concatMap() 去检索每一个视频的 id，title，和 boxarts url。</h4>
 
-		<p>让我们再来做一下刚刚做过的那个练习。然而这一次我们将用 concatMap() 来替换 map().concatAll() 来简化代码。</p>
+		<p>让我们再来做一下刚刚做过的那个练习。这一次我们将用 concatMap() 来替换 map().concatAll() 来简化代码。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -1751,8 +1751,8 @@
 				return largestBoxart;
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Find largest box art
@@ -1843,8 +1843,8 @@
 				}
 			};
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Implement reduce
@@ -1922,8 +1922,8 @@
 					reduce   // Complete this expression
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			 // Find largest rating
@@ -1985,8 +1985,8 @@
 					reduce   // Complete this expression
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Find largest box art with reduce
@@ -2102,8 +2102,8 @@
 					{});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Reducing with an initial value
@@ -2277,8 +2277,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output">
 		</div>
 		<pre class="verifier">
@@ -2456,8 +2456,8 @@
 				return videoIdAndBookmarkIdPairs;
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Zip imperatively
@@ -2551,8 +2551,8 @@
 				return results;
 			};
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Implement zip
@@ -2636,8 +2636,8 @@
 					zip( //... finish this expression
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
 		<pre class="verifier">
 			// Combine videos and bookmarks
@@ -2801,8 +2801,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<pre class="verifier">
 			// Find id, title, smallest box art, and bookmark id
 			function(str) {
@@ -3012,8 +3012,8 @@
 				return lists. // complete this expression
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output"></div>
         <pre class="verifier">
 			// Combine videos and bookmarks
@@ -3193,8 +3193,8 @@
 
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output">
 		</div>
 		<pre class="verifier">
@@ -3343,8 +3343,8 @@
 					});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<p>Console</p>
 
 		<div class="output" style="height:200px;overflow:scroll">
@@ -3485,7 +3485,7 @@
 				button.addEventListener("click", handler);
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<div class="output" style="text-align:center">
 			<button class="button" id="thisfirstbutton">Click this button after running the program</button>
 		</div>
@@ -3529,7 +3529,7 @@
 						});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<div class="output" style="text-align:center">
 			<button class="button">Click this button after running the program</button>
 		</div>
@@ -3612,8 +3612,8 @@
 					});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<div class="output" style="text-align:center">
 			<button class="button">Click this button after pressing the run button</button>
 		</div>
@@ -3682,8 +3682,8 @@
 					});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<button class="stop">Stop</button>
 		&lt;-Press this button to complete the sequence of microsoft stock prices.
 		<p>Console</p>
@@ -3914,8 +3914,8 @@
 				});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<!-- <button class="showAnswer">Show Answer</button> -->
+		<button class="go">运行</button>
+		<!-- <button class="showAnswer">显示答案</button> -->
 		<button class="resetSprite">Reset Sprite</button>
 		<div class="control output container" style="height:200px;text-align:center">
             <span class="control sprite" style="position:absolute; border: solid 1px black; background-color: white;z-index:23">
@@ -4029,8 +4029,8 @@
 				});
 			}
 		</textarea>
-		<button class="go">Run</button>
-		<button class="showAnswer">Show Answer</button>
+		<button class="go">运行</button>
+		<button class="showAnswer">显示答案</button>
 		<button class="resetSprite">Reset Sprite</button>
 		<div class="control output container" style="height:200px;text-align:center">
             <span class="control sprite" style="position:absolute; border: solid 1px black; background-color: white;z-index:23">
@@ -4115,7 +4115,7 @@
 					});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
 			function(str, lesson) {
@@ -4256,7 +4256,7 @@
 					});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
 			function(str, lesson) {
@@ -4395,7 +4395,7 @@
 							});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
 			function(str, lesson) {
@@ -4489,7 +4489,7 @@
 						});
 			}
 		</textarea>
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
 			function(str, lesson) {
@@ -4571,12 +4571,12 @@
 			}
 		</textarea>
 
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<label for="inputName">Name</label>
 		<input type="text" class="inputName"><strong class="savedValue"></strong>
 		<button class="submitInputName">Save</button> <<-- Click this to save your data
 
-		<button class="showAnswer">Show Answer</button>
+		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
 			function(str, lesson) {
@@ -4650,14 +4650,14 @@
 			}
 		</textarea>
 
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 
 		<label for="inputName">Name</label>
 		<input type="text" class="inputName">
 
 		<ul class="searchResultsForAutoComplete"></ul>
 
-		<button class="showAnswer">Show Answer</button>
+		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
 			function(str, lesson) {
@@ -4748,12 +4748,12 @@
 			}
 		</textarea>
 
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 
 		<label for="inputName">Enter Keys</label>
 		<input type="text" class="inputName">
 		<div>Keys filtered by distinctUntilChanged: <strong class="filteredKeysByDistinct"></strong></div>
-		<button class="showAnswer">Show Answer</button>
+		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
 			function(str, lesson) {
@@ -4835,12 +4835,12 @@
 			}
 		</textarea>
 
-		<button class="go">Run</button>
+		<button class="go">运行</button>
 		<label for="inputName">Name</label>
 		<input type="text" class="inputName">
 
 		<ul class="searchResultsForAutoComplete"></ul>
-		<button class="showAnswer">Show Answer</button>
+		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
 			function(str, lesson) {
@@ -4942,7 +4942,7 @@
 		<div>Keys filtered by distinctUntilChanged</div>
 		<div class="filteredKeysByDistinct"></div>
 
-		<button class="showAnswer">Show Answer</button>
+		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
 			function(str, lesson) {
