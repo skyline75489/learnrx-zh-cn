@@ -404,7 +404,6 @@
 				var results = [];
 				this.forEach(function(itemInArray) {
 					results.push(projectionFunction(itemInArray));
-
 				});
 
 				return results;
@@ -1448,11 +1447,9 @@
 			Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
 				return this.
 					map(function(item) {
-						// ------------   INSERT CODE HERE!  ----------------------------
-						// Apply the projection function to each item. The projection
-						// function will return an new child array. This will create a
-						// two-dimensional array.
-						// ------------   INSERT CODE HERE!  ----------------------------
+						// ------------  在这里写下答案  -----------------------------------
+						// 对每个元素都执行投影函数，这个函数会返回一个子数组，整个操作会产生一个二维数组
+						// ------------  在这里写下答案  -----------------------------------
 					}).
 					// apply the concatAll function to flatten the two-dimensional array
 					concatAll();
@@ -1589,7 +1586,7 @@
 					];
 
 
-				// Use one or more concatMap, map, and filter calls to create an array with the following items
+				// 使用一个或者多个 concatMap, map，filter 方法拿到一个有下列元素的数组
 				// [
 				//	 {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg" },
 				//	 {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg" },
@@ -1687,7 +1684,7 @@
 					];
 
 
-				// Use one or more concatMap, map, and filter calls to create an array with the following items
+				// 使用一个或者多个 concatMap, map，filter 方法拿到一个有下列元素的数组
 				// [
 				//     {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture150.jpg" },
 				//     {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg" },
@@ -1708,7 +1705,7 @@
 				  });
 			}
 		</pre>
-		<p class="post">将最后一个运算变为map，这将是一个去访问几个嵌套的concatMap运算的非常常见的方式。你可以把这种方式当做一个嵌套的forEach的函数版本。</p>
+		<p class="post">将最后一个运算变为 map，这将是一个去访问几个嵌套的 concatMap 运算的很常见的方式。你可以把这种方式当做一个嵌套的 forEach 的函数式版本。</p>
 	</div>
 
 
@@ -1717,7 +1714,7 @@
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
 		<h3>缩减数组</h3>
-		<p>有时我们需要<i>同时</i>对数组中很多项进行操作。举例，我们需要找到数组中的最大整型值。我们不能使用filter()，因为filter()每次只对一项进行检查。为了找到这个最大整型值，我们需要互相比较数组中的每一项。
+		<p>有时我们需要<i>同时</i>对数组中很多项进行操作。举例，我们需要找到数组中的最大整型值。我们不能使用 filter()，因为 filter() 每次只对一项进行检查。为了找到这个最大整型值，我们需要互相比较数组中的每一项。
 		</p>
 		<p>先<i>假设</i>某一项是最大值（可能是第一项)，然后再把它和数组中其余所有项进行对比。每一次我们找到一个比假想值大的数时，就把这个假想值替换为我们找到的这个值，直到我们遍历完整个数组。</p>
 		<p>如果我们用闭包来替换特定大小的比较，我们需要写一个函数来遍历数组。每一步我们的函数将在当前的值和最后的值运用闭包 ，下一次就将结果作为最后的值。最后我们只剩下一个值。这个过程被称为<i>缩减</i>，因为我们将很多的值变为了一个值。</p>
