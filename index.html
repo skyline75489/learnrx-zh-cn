@@ -1797,7 +1797,7 @@
 	<div class="lesson">
 		<h4>练习 16: 实现 reduce()</h4>
 
-		<p>Let's add a reduce() function to the Array type. Like map</p>
+		<p>和 map 类似，我们给 Array 类型增加一个 reduce 方法。</p>
 		<textarea class="code" rows="40" cols="80">
 			// [1,2,3].reduce(function(accumulatedValue, currentValue) { return accumulatedValue + currentValue; }); === [6];
 			// [1,2,3].reduce(function(accumulatedValue, currentValue) { return accumulatedValue + currentValue; }, 10); === [16];
@@ -1806,12 +1806,12 @@
 				var counter,
 					accumulatedValue;
 
-				// If the array is empty, do nothing
+				// 如果数组是空，直接返回
 				if (this.length === 0) {
 					return this;
 				}
 				else {
-					// If the user didn't pass an initial value, use the first item.
+					// 如果用户没有提供初始值，使用数组当中的第一个元素。
 					if (arguments.length === 1) {
 						counter = 1;
 						accumulatedValue = this[0];
@@ -1824,9 +1824,8 @@
 						throw "Invalid arguments.";
 					}
 
-					// Loop through the array, feeding the current value and the result of
-					// the previous computation back into the combiner function until
-					// we've exhausted the entire array and are left with only one value.
+					// 遍历整个数组，把当前元素和上一次计算的结果，传给 combiner 函数，直到遍历完整个
+					// 数组，只剩下一个值。
 					while(counter < this.length) {
 						accumulatedValue = combiner(accumulatedValue, this[counter])
 						counter++;
@@ -1866,12 +1865,12 @@
 				var counter,
 					accumulatedValue;
 
-				// If the array is empty, do nothing
+				// 如果数组是空，直接返回
 				if (this.length === 0) {
 					return this;
 				}
 				else {
-					// If the user didn't pass an initial value, use the first item.
+					// 如果用户没有提供初始值，使用数组当中的第一个元素。
 					if (arguments.length === 1) {
 						counter = 1;
 						accumulatedValue = this[0];
@@ -1884,16 +1883,15 @@
 						throw "Invalid arguments.";
 					}
 
-					// Loop through the array, feeding the current value and the result of
-					// the previous computation back into the combiner function until
-					// we've exhausted the entire array and are left with only one function.
+					// 遍历整个数组，把当前元素和上一次计算的结果，传给 combiner 函数，直到遍历完整个
+					// 数组，只剩下一个值。
 					while(counter < this.length) {
 						accumulatedValue = combiner(accumulatedValue, this[counter])
 						counter++;
 					}
 
 					return [accumulatedValue];
-				}
+					}
 			};
 		</pre>
 	</div>
@@ -1902,17 +1900,16 @@
 
 
 	<!-- ************************* LESSON ************************* -->
-	<div class="lesson"><h4>Exercise 17: Retrieve the largest rating.</h4>
+	<div class="lesson"><h4>练习 17: 获取最大的 rating。</h4>
 
-		<p>Let's use our new reduce function to isolate the largest value in an array of ratings.</p>
+		<p>下面我们使用 reduce 方法找到一个 rating 数组当中的最大值。</p>
 		<textarea class="code" rows="15" cols="80">
 			function() {
 				var ratings = [2,3,1,4,5];
 
-				// You should return an array containing only the largest rating. Remember that reduce always
-				// returns an array with one item.
+				// 返回一个只有最大 rating 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
 				return ratings.
-					reduce   // Complete this expression
+				reduce   // Complete this expression
 			}
 		</textarea>
 		<button class="go">运行</button>
@@ -1937,8 +1934,7 @@
 			function() {
 				var ratings = [2,3,1,4,5];
 
-				// You should return an array containing only the largest rating. Remember that reduce always
-				// returns an array with one item.
+				// 返回一个只有最大 rating 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
 				return ratings.
 				  reduce(function(acc, curr) {
 					if(acc > curr) {
@@ -1950,8 +1946,7 @@
 				  });
 			}
 		</pre>
-		<p class="post">Nice work. Now let's try combining reduce() with our other functions to build more complex
-			queries.</p>
+		<p class="post">干得漂亮。下面我们将试着把 reduce() 和其他函数结合起来构建更复杂的查询操作。</p>
 	</div>
 
 
