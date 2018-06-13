@@ -1705,7 +1705,7 @@
 				  });
 			}
 		</pre>
-		<p class="post">将最后一个运算变为 map，这将是一个去访问几个嵌套的 concatMap 运算的很常见的方式。你可以把这种方式当做一个嵌套的 forEach 的函数式版本。</p>
+		<p class="post">将最后一个运算变为 map，是一种访问若干嵌套的 concatMap 运算的很常见的方式。你可以把这种方式当做一个嵌套的 forEach 的函数式版本。</p>
 	</div>
 
 
@@ -1719,12 +1719,10 @@
 		<p>先<i>假设</i>某一项是最大值（可能是第一项)，然后再把它和数组中其余所有项进行对比。每一次我们找到一个比假想值大的数时，就把这个假想值替换为我们找到的这个值，直到我们遍历完整个数组。</p>
 		<p>如果我们用闭包来替换特定大小的比较，我们需要写一个函数来遍历数组。每一步我们的函数将在当前的值和最后的值运用闭包 ，下一次就将结果作为最后的值。最后我们只剩下一个值。这个过程被称为<i>缩减</i>，因为我们将很多的值变为了一个值。</p>
 
-		<h4>Exercise 15: Use forEach to find the largest box art</h4>
+		<h4>练习 15: 使用 forEach 找到最大的 box art</h4>
 
-		<p>In this example we use forEach to find the largest box art. Each time we examine a new boxart we update a
-			variable with the currently known maximumSize. If the boxart is smaller than the maximum size, we discard it. If
-			it's larger, we keep track of it. Finally we're left with a single boxart which must necessarily be the
-			largest.</p>
+		<p>在这个例子中我们将使用 forEach 找到最大的 box art。我们每次检查一个新的 boxart 都会更新一下目前找到的最大值 maximumSize。
+			如果当前 boxart 的大小小于这个值，就丢弃它，如果大于，就保留它。最后我们会得到一个拥有最大尺寸的 boxart。</p>
 		<textarea class="code" rows="15" cols="80">
 			function() {
 				var boxarts = [
@@ -1788,10 +1786,8 @@
 				return largestBoxart;
 			}
 		</pre>
-		<p class="post">This process is a reduction because we're using the information we derived from the last computation
-			to calculate the current value. However in the example above, we still have to specify the method of traversal.
-			Wouldn't it be nice if we could just specify what operation we wanted to perform on the last and current value?
-			Let's create a helper function to perform reductions on arrays.</p>
+		<p class="post">这个过程叫做缩减（reduction）。我们每次使用上次计算的结果，来计算当前的值。在这个例子中我们
+			还是需要手动进行遍历操作。如果我们只需要声明我们想要做的操作，不就更好了吗？下面我们就来写这样一个助手函数用来对数组进行缩减操作。</p>
 	</div>
 
 
@@ -1799,7 +1795,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 16: Implement reduce()</h4>
+		<h4>练习 16: 实现 reduce()</h4>
 
 		<p>Let's add a reduce() function to the Array type. Like map</p>
 		<textarea class="code" rows="40" cols="80">
