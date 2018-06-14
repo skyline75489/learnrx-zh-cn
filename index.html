@@ -1934,7 +1934,7 @@
 			function() {
 				var ratings = [2,3,1,4,5];
 
-				// 返回一个只有最大 rating 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
+				// 返回一个只包含最大 rating 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
 				return ratings.
 				  reduce(function(acc, curr) {
 					if(acc > curr) {
@@ -1954,10 +1954,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 18: Retrieve url of the largest boxart</h4>
+		<h4>练习 18: 获取最大的 boxart 的 url</h4>
 
-		<p>Let's try combining reduce() with map() to reduce multiple boxart objects to a single value: the url of the
-			largest box art.</p>
+		<p>我们试一下结合使用 reduce() 和 map()，将多个 boxart 对象缩减成一个值：最大 boxart 的 url。</p>
 		<textarea class="code" rows="15" cols="80">
 			function() {
 				var boxarts = [
@@ -1967,8 +1966,7 @@
 						{ width: 425, height:150, url:"http://cdn-0.nflximg.com/images/2891/Fracture425.jpg" }
 					];
 
-				// You should return an array containing only the URL of the largest box art. Remember that reduce always
-				// returns an array with one item.
+				// 返回一个只包含最大 boxart 的 URL 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
 				return boxarts.
 					reduce   // Complete this expression
 			}
@@ -2000,8 +1998,7 @@
 						{ width: 425, height:150, url:"http://cdn-0.nflximg.com/images/2891/Fracture425.jpg" }
 					];
 
-				// You should return an array containing only the largest box art. Remember that reduce always
-				// returns an array with one item.
+				// 返回一个只包含最大 boxart 的 URL 的数组。注意 reduce 总是返回一个只包含一个元素的数组。
 				return boxarts.
 				  reduce(function(acc,curr) {
 					if (acc.width * acc.height > curr.width * curr.height) {
@@ -2023,7 +2020,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 19: Reducing with an initial value</h4>
+		<h4>练习 19: Reducing with an initial value</h4>
 
 		<p>Sometimes when we reduce an array, we want the reduced value to be a different type than the items stored in the
 			array. Let's say we have an array of videos and we want to reduce them to a single map where the key is the
