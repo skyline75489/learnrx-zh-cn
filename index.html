@@ -2020,11 +2020,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>练习 19: Reducing with an initial value</h4>
+		<h4>练习 19: 带有初始值的缩减 </h4>
 
-		<p>Sometimes when we reduce an array, we want the reduced value to be a different type than the items stored in the
-			array. Let's say we have an array of videos and we want to reduce them to a single map where the key is the
-			video id and the value is the video's title.</p>
+		<p>有时候，我们想缩减一个数组，同时希望缩减后的值类型，不同于数组当中的元素值类型。
+			举个例子，我们有一个 video 的数组，我们想通过缩减它来得到一个键是 video id，值是 video title 的 map。</p>
 
 		<textarea id="q18" class="code" rows="15" cols="80">
 			function() {
@@ -2077,8 +2076,7 @@
 
 						var copyOfAccumulatedMap = Object.create(accumulatedMap);
 
-						// ----- INSERT CODE TO ADD THE VIDEO TITLE TO THE ----
-						// ----- NEW MAP USING THE VIDEO ID AS THE KEY	 ----
+						// ----- 用 video id 做 key 把 video title 插入新的 map 中
 
 						return copyOfAccumulatedMap;
 					},
@@ -2171,8 +2169,7 @@
 			}
 		</pre>
 
-		<p class="post">Nice work. Now let's try combining reduce() with our other functions to build more complex
-			queries.</p>
+		<p class="post">做的好。现在我们试着把 reduce 和其他函数结合起来构建更复杂的查询操作。</p>
 	</div>
 
 
@@ -2180,11 +2177,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 20: Retrieve the id, title, and <i>smallest</i> box art url for every video.</h4>
+		<h4>练习 20: 取出每个 vidode 的 id，title 以及<i>最小的</i> boxart 的 url。</h4>
 
-		<p>This is a variation of the problem we solved earlier, where we retrieved the url of the boxart with a width of
-			150px. This time we'll use reduce() instead of filter() to retrieve the <i>smallest</i> box art in the boxarts
-			array.</p>
+		<p>这个练习是我们之前解决过的问题的一个变体。在之前的问题中，我们取出了 width 为 150px 的 boxart 的 url。
+			这次我们使用 reduce() 替代 filter，取出<i>最小的</i> box art。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -2247,7 +2243,7 @@
 				];
 
 
-				// Use one or more concatMap, map, and reduce calls to create an array with the following items (order doesn't matter)
+				// 使用一个或多个 concatMap， map，和 reduce 操作得到下面的数组（顺序无关）。
 				// [
 				//	 {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture120.jpg" },
 				//	 {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber130.jpg" },
@@ -2352,7 +2348,7 @@
 				];
 
 
-				// Use one or more concatMap, map, and reduce calls to create an array with the following items (order doesn't matter)
+				// 使用一个或多个 concatMap， map，和 reduce 操作得到下面的数组（顺序无关）。
 				// [
 				//     {"id": 675465,"title": "Fracture","boxart":"http://cdn-0.nflximg.com/images/2891/Fracture120.jpg" },
 				//     {"id": 65432445,"title": "The Chamber","boxart":"http://cdn-0.nflximg.com/images/2891/TheChamber130.jpg" },
