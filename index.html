@@ -2382,14 +2382,13 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h3>Zipping Arrays</h3>
-		<p>Sometimes we need to combine two arrays by progressively taking an item from each and combining the pair. If you
-			visualize a zipper, where each side is an array, and each tooth is an item, you'll have a good idea of how the zip
-			operation works.</p>
-		<h4>Exercise 21: Combine videos and bookmarks by index</h4>
+		<h3>合并数组</h3>
+		<p>有时候我们需要把两个数组合并(zip)，分别从两个数组当中拿出一个元素，组成一个元素对的数组。把数组想象成拉链，每个数组是拉链的一边，
+			元素是拉链的牙，这样你可以更好地理解合并数组是什么样的操作。</p>
+		<h4>练习 21: 按数组下标合并 videos 和 bookmarks</h4>
 
-		<p>Use a for loop to traverse the videos and bookmarks array at the same time. For each video and bookmark pair,
-			create a {videoId, bookmarkId} pair and add it to the videoIdAndBookmarkIdPairs array.</p>
+		<p>使用一个 for 循环，同时遍历 videos 和 bookmarks 数组。对每一个 video 和 bookmarkl 创建一个 {videoId, bookmarkId} 对，
+			并把它加入 videoIdAndBookmarkIdPairs 数组中。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var videos = [
@@ -2431,7 +2430,7 @@
 				videoIdAndBookmarkIdPairs = [];
 
 				for(var counter = 0; counter < Math.min(videos.length, bookmarks.length); counter++) {
-					// Insert code here to create a {videoId, bookmarkId} pair and add it to the videoIdAndBookmarkIdPairs array.
+					// 创建一个 {videoId, bookmarkId} 对并把它添加到 videoIdAndBookmarkIdPairs。
 				}
 
 				return videoIdAndBookmarkIdPairs;
@@ -2510,7 +2509,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 22: Implement zip</h4>
+		<h4>练习 22: 实现 zip</h4>
 
 		<p>Let's add a static zip() function to the Array type. The zip function accepts a combiner function, traverses each
 			array at the same time, and calls the combiner function on the current item on the left-hand-side and
