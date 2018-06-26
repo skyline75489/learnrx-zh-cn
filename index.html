@@ -2511,11 +2511,8 @@
 	<div class="lesson">
 		<h4>练习 22: 实现 zip</h4>
 
-		<p>Let's add a static zip() function to the Array type. The zip function accepts a combiner function, traverses each
-			array at the same time, and calls the combiner function on the current item on the left-hand-side and
-			right-hand-side. The zip function requires an item from each array in order to call the combiner function,
-			therefore the array returned by zip will only be as large as the smallest input array.
-
+		<p>我们来给 Array 类型添加一个静态的 zip() 方法。zip 方法接受一个 combiner 函数作为参数，同时遍历两个数组，并且在两边数组的对应元素执行
+			combiner 函数。zip 方法需要元素才能调用 combiner，因此 zip 返回的数组长度是两个数组当中最小的那个的长度。
 		<p>
 		<textarea class="code" rows="40" cols="80">
 			// JSON.stringify(Array.zip([1,2,3],[4,5,6], function(left, right) { return left + right })) === '[5,7,9]'
@@ -2525,7 +2522,7 @@
 					results = [];
 
 				for(counter = 0; counter < Math.min(left.length, right.length); counter++) {
-					// Add code here to apply the combinerFunction to the left and right-hand items in the respective arrays
+					// 对两个数组中的对应元素执行 combinerFunction 方法。
 				}
 
 				return results;
