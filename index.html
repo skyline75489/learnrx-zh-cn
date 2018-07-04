@@ -2684,13 +2684,11 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 24: Retrieve each video's id, title, middle interesting moment time, and <i>smallest</i> box art url.</h4>
+		<h4>练习 24: 取出每个 video 的 id，title，middle 类型的 interesting moment time, 和 <i>最小的</i> box art url.</h4>
 
-		<p>This is a variation of the problem we solved earlier. This time each video has an interesting moments collection,
-			each representing a time during which a screenshot is interesting or representative of the title as a whole. Notice
-			that both the boxarts and interestingMoments arrays are located at the same depth in the tree. Retrieve the time of
-			the middle interesting moment and the smallest box art url <i>simultaneously</i> with zip(). Return an {id, title,
-			time, url} object for each video.</p>
+		<p>这是我们之前解决过问题的一个变种。这次我们的每个 video 包含了一个关键时刻的集合，关键时刻代表这个时间的画面是视频当中具有代表性的或者最有趣的。
+			注意 boxart 和 interestingMoments 数组处于树的同一深度。使用 zip() <i>同时</i> 取出 middle 类型的 interesting moment 的 time 和
+			最小的 boxart 的 url。对每一个 video，返回一个 {id, title, time, url } 对象。</p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var movieLists = [
@@ -2768,7 +2766,7 @@
 						}
 					];
 
-				//------------ COMPLETE THIS EXPRESSION --------------
+				//------------ 完成这个表达式 --------------
 				return movieLists.
 					concatMap(function(movieList) {
 
@@ -2871,8 +2869,8 @@
 						}
 					];
 
-				//------------ COMPLETE THIS EXPRESSION --------------
-				return movieLists.concatMap(function(movieList) {
+					//------------ 完成这个表达式 --------------
+					return movieLists.concatMap(function(movieList) {
 					return movieList.videos.concatMap(function(video) {
 						return Array.zip(
 							video.boxarts.reduce(function(acc,curr) {
