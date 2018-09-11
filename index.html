@@ -3268,13 +3268,12 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 27: Stock Ticker</h4>
+		<h4>练习 27: 股票报价机</h4>
 
-		<p>Let's try an easier question. Let's say we have a collection of all of the prices for NASDAQ stocks over time.
-			Every time the price of a stock changes on the NASDAQ ticker an entry is added to this collection. Let's say
-			that ten days ago you bought shares in Microsoft, and now you want to print all of the MSFT share prices since
-			then. Filter the collection for MSFT trades starting from ten days ago and print each price record (including
-			the time stamp) using the print() function. <b>Note: this is not a trick question. It's as easy as it seems.</b>
+		<p>我们来看一个简单一些的问题。现在我们有一些 NASDAQ 股票不同时间的价格数据。每当股票价格变化时，NASDAQ 股票报价机就
+			会在集合中加入一条数据。例如，我们在 10 天前买入了微软的股票，现在你想知道从那时候起，所有 MSFT 股票的价格情况。
+			过滤集合，找到从 10 天前算起，所有 MSFT 的数据，然后使用 print() 函数打印出每个价格记录（包括时间戳）。
+			 <b>注意：这不是一个有陷阱的题目，它就是像看起来那么简单。</b>
 		</p>
 		<pre>
 			// The pricesNASDAQ collection looks something like this...
@@ -3308,7 +3307,7 @@
 		</textarea>
 		<button class="go">运行</button>
 		<button class="showAnswer">显示答案</button>
-		<p>Console</p>
+		<p>命令行输出</p>
 
 		<div class="output" style="height:200px;overflow:scroll">
 		</div>
@@ -3372,56 +3371,52 @@
 			}
         </pre>
 		<div class="post">
-			<p><b>Notice that the console is changing over time.</b> Now look at the time stamps on the stock prices. We're
-				displaying stock prices sampled <i>after</i> we ran our program! How could our array have contained stock
-				price records from the future? Did we accidentally rip a hole in the space-time continuum?</p>
+			<p><b>注意命令行输出在随着时间变化。</b> 现在看一下股票价格的时间戳，我们展示的股票价格，是在我们运行程序
+				<i>之后</i> 才拿到的！我们的数组怎么能够包括来自未来的股票数据呢？ 难道我们一不小心破坏了
+				空间时序统一性？</p>
 
-			<p>The solution to the riddle is that <b>pricesNASDAQ is <u>not</u> an array</b>. Unlike an array, which can
-				only store a snapshot of stock prices, this new type can react to changes and update over time.</p>
+			<p>这个谜题的答案在于，<b>pricesNASDAQ <u>不是</u> 一个数组</b>。数组只能够存储股票价格的一个快照，而这种新类型
+				可以对于变化进行响应，随着时间更新自己。</p>
 
-			<p>In the next section I'll reveal the inner workings of this magical type. You'll learn how you can use it to
-				model everything from mouse events to asynchronous JSON requests. Finally I'll show you how <b>you can query
-					this type using the 5 query functions you already know.</b> It's about time we gave this magical type a
-				name...</p>
-			<h2>Working with Observables</h2>
+			<p>在下一节内容当中，我会向你展示这个神奇类型的内部原理。你将学习到如何将它用于建模，从鼠标事件到异步 JSON 请求，都可以用到它。
+				最终我将展示<b>如何使用你已经知道的 5 个查询函数来查询这个类型的数据。</b>是时候给这个类型起一个名字了...</p>
+			<h2>使用 Observables</h2>
 
-			<p>Microsoft's open-source <a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a> library
-				introduces a new collection type to Javascript: <b>Observable.</b> An Observable is a lot like an Event. Like an
-				Event, <b>an Observable is a sequence of values that a data producer <i>pushes</i> to the consumer.</b> However
-				unlike an Event, <b>an Observable can signal to a listener that it has completed,</b> and will send no more data.
+			<p>微软的开源库 <a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a> 在 Javascript 当中
+				引入了一个新的集合类型：<b>Observable</b>。Observable 和事件（Event）很类似。和 Event 一样，
+				<b>Observable 是一个由数据产生者<i>推送</i>给数据消费者的值的序列。</b>
+				和 Event 不同的是， <b>Observable 可以通知监听者，它已经完成</b>，并且不再发送任何数据。
 			</p>
 
-			<p>Observables can send data to consumers asynchronously. Unlike Array, there's no Javascript literal syntax for
-				creating Observable sequences. However we can build a helper method that visually describes the contents of
-				sequences as well as the times between each item's arrival. The <b>seq</b> function creates an Observable from an
-				array of items, and adds a delay for every empty item encountered. Every ,,, adds up to a second.</p>
+			<p>Observables 可以异步地像消费者发送数据。和数组不同，Javascript 当中没有创建
+			 Observable 的字面值语法。不过我们可以通过构造一个助手方法来描述序列的值和每个值到达的时间。
+			  <b>seq</b> 函数可以通过数组来构造 Observable，当碰到一个空值时，添加一个时间上的延迟。
+			   每个 ,,, 会增加 1 秒的延迟。</p>
 			<pre>
-				// An array of numbers 1,2,3
+				// 一个数字数组 1,2,3
 				var numbers123Array =      [1,2,3];
 
-				// A sequence that returns 1, and then after 4 seconds returns 2,
-				// and then after another second returns 3, and then completes.
+				// 一个序列，先返回 1， 4 秒钟之后返回 2，
+				// 再等待 1 秒返回 3，然后结束。
 				var numbers123Observable = seq([1,,,,,,,,,,,,2,,,3]);
 
-				// Like Arrays, Observables can contain any object - even Arrays.
+				// 和数组一样，Observables 可以包含任意对象，甚至数组本身。
 				var observableOfArrays = seq([ [1,2,3],,,,,,[4,5,6],,,,,,,,,,,[1,2] ]);
 			</pre>
-			<p>Observables are a sequence of values, delivered one after the other. Therefore it's possible that an Observable can
-				go on sending data to a listener forever just like a mouse move event. To create a sequence that doesn't complete,
-				you can add a trailing ,,, to the end of the items passed to seq().</p>
+			<p>Observables 是一系列值组成的序列，一个接一个的发送出去。因此 一个 Observable 有可能会一直像监听者发送数据，例如鼠标的移动事件。
+				要创建一个不会完成的序列，你可以在 seq() 的参数的末尾添加 ,,, 。</p>
 			<pre>
-				// The trailing ,,, ensures that the sequence will <u>not</u> complete.
+				// 结尾的 ,,, 保证了这个序列 <u>不会</u> 终止。
 				var mouseMovesObservable =
 					seq([ {x: 23, y: 55},,,,,,,{x: 44, y: 99},,,{x:55,y:99},,,{x: 54, y:543},,, ]);
 
-				// No trailing ,,, indicates that sequence <u>will</u> complete.
+				// 没有结尾的 ,,, 意味着这个序列 <u>将会</u> 结束。
 				var numbers123Observable = seq([1,,,2,,,3]);
 			</pre>
-			<p>Querying Arrays only gives us a snapshot. By contrast, querying Observables allows us to create data sets that react
-				and update as the system changes over time. This enables a very powerful type of programming known as <i>reactive
-					programming</i>.</p>
+			<p>对数组的查询只能给我们提供一个快照。与其对比，对 Observables 的查询允许我们创建一个能够随着时间响应变化而且更新自己的数据集。
+				这个特性带来了一个非常强大的编程模型，被称为 <i>响应式（Reactive）编程</i>。</p>
 
-			<p>Let's start off by contrasting Observable with Events...</p>
+			<p>让我们先从 Observable 和 Events 的对比说起...</p>
 		</div>
 	</div>
 
