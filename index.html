@@ -1721,7 +1721,7 @@
 		<h4>练习 15: 使用 forEach 找到最大的 box art</h4>
 
 		<p>在这个例子中我们将使用 forEach 找到最大的 box art。我们每次检查一个新的 boxart 都会更新一下目前找到的最大值 maximumSize。
-			如果当前 boxart 的大小小于这个值，就丢弃它，如果大于，就保留它。最后我们会得到一个拥有最大尺寸的 boxart。</p>
+			如果当前 boxart 的 size 小于这个值，就丢弃它，如果大于，就保留它。最后我们会得到一个拥有最大尺寸的 boxart。</p>
 		<textarea class="code" rows="15" cols="80">
 			function() {
 				var boxarts = [
@@ -2898,22 +2898,19 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h3>Powerful Queries</h3>
+		<h3>强大的查询能力</h3>
 
-		<p>Now that we've learned the five operators let's flex our muscles and write some powerful queries.</p>
+		<p>现在我们已经学习了 5 个操作符。让我们通过实战练习一下如何书写复杂查询。</p>
 
-		<h4>Exercise 25: Converting from Arrays to Trees</h4>
+		<h4>练习 25: 把数组转换成树</h4>
 
-		<p>When information is organized in a tree like a JSON expression, relationships point from parent to child. In
-			relational systems like databases, relationships point from children to their parents. Both ways of organizing
-			information are equivalent, and depending on the circumstances, we might get data organized in one way or
-			another. It may surprise you to learn that you can use the 5 query functions you already know to easily convert
-			between these representations. In other words, <b>not only can you query arrays from trees, you can query trees
-				from arrays</b>.</p>
+		<p>当信息使用像 JSON 一样的树状结构存储时，数据之间的关系是从父亲节点指向孩子节点。在数据库这样的关系型系统里面，数据之前的关系是由孩子节点指向
+			父亲节点。两种组织信息的方式在表达能力上是一致。根据使用场景不同，我们可能会希望数据采用特定的方式进行组织。
+			这可能会吓你一跳，不过通过之前学的 5 个函数，你已经能够很容易地将数据在这两种组织方式之间转换了。换句话说
+			<b>你不仅仅能够从树中查询出数组，你也可以从数组当中查询出树</b>。</p>
 
-		<p>We have 2 arrays each containing lists, and videos respectively. Each video has a listId field indicating its
-			parent list. We want to build an array of list objects, each with a name and a videos array. The videos array
-			will contain the video's id and title. In other words we want to build the following structure:</p>
+		<p>现在我们有两个数组，分别包含 list 和 video 信息。每个 video 有一个 listId 字段，记录着它的父亲 list。我们想得到一个 list 对象的数组，
+			其中的对象包含一个 name 和一个 video 的数组。这个 video 数组会包含 video 的 id 和 title。也就是说，我们想要构造出下面的结构：</p>
         <pre>
 			[
 				{
@@ -2944,9 +2941,7 @@
 				}
 			]
         </pre>
-		<p><b>Note: please make sure when creating objects (both lists and videos) that you add properties in the same order
-			as above. This doesn't impact the correctness of your code, but the verifier expects properties to be created in
-			this order.</b></p>
+		<p><b>注意：在创建对象时，确保对象（list 和 video）是按照上面的顺序添加的。这一点不影响你代码的正确性，但是检查答案时期望的顺序就是上面的顺序。</b></p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var lists = [
@@ -3053,8 +3048,7 @@
 				});
 			}
         </pre>
-		<p class="post">Looks like you figured out that you can use map and filter to <i>join</i> two different arrays by a
-			key. Now let's try a more complex example...</p>
+		<p class="post">看样子你已经学会了如何使用 map 和 filter 来通过 key <i>关联</i> 两个不同的数组。让我们来看一个更加复杂的例子...</p>
 	</div>
 
 
@@ -3062,12 +3056,12 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 26: Converting from Arrays to <i>Deeper</i> Trees</h4>
+		<h4>练习 26: 把数组转换成 <i>更深层的</i> 树</h4>
 
-		<p>Let's try creating a deeper tree structure. This time we have 4 separate arrays each containing lists, videos,
-			boxarts, and bookmarks respectively. Each object has a parent id, indicating its parent. We want to build an
-			array of list objects, each with a name and a videos array. The videos array will contain the video's id, title,
-			bookmark time, and smallest boxart url. In other words we want to build the following structure:</p>
+		<p>我们试着创建一个更深层的树形结构。这次我们有 4 个不同的数组，分别包含 list，video ，boxarts 和 bookmarks。
+			每个对象都包含一个 parent 的 id，标明自己的父亲节点。我们想要构造一个 list 对象的数组，其中每个对象包含 name 和
+			video 的数组。这个 video 数组包含 video 的 id，title，bookmark 的 time，和最小的 boxart url。也就是我们想要构造
+		    下面的结构：</p>
         <pre>
 			[
 				{
@@ -3107,9 +3101,7 @@
 			]
         </pre>
 
-		<p><b>Note: please make sure when creating objects (both lists and videos) that you add properties in the same order
-			as above. This doesn't impact the correctness of your code, but the verifier expects properties to be created in
-			this order.</b></p>
+		<p><b>注意：在创建对象时，确保对象（list 和 video）是按照上面的顺序添加的。这一点不影响你代码的正确性，但是检查答案时期望的顺序就是上面的顺序。</b></p>
 		<textarea class="code" rows="60" cols="80">
 			function() {
 				var lists = [
@@ -3265,12 +3257,10 @@
 
 			}
         </pre>
-		<p class="post">Wow! That's a large query, but the code is still small relative to the amount of work it's doing. If
-			we rewrote this query with a series of loops our code would be much less self-describing. Loops don't give the
-			reader any information about the kind of operation being performed. Every time you see a loop, you need to
-			carefully read through the code to find out what's being done. Is it a projection? A filter? A reduction? Why
-			use loops for querying data when we've demonstrated that the 5 functions can be used to create virtually any
-			output we want?</p>
+		<p class="post">哇！这是个很长的查询，但是代码相对于它做的事情来说，并不算很长。如果我们使用传统的循环操作，代码的可读性
+			会大大下降。循环不能告诉读者所进行的操作是什么。当你看到一个循环的时候，你需要仔细阅读循环体中的代码，才能知道它是在
+			做什么。它是在投影？还是在过滤？还是在缩减？通过例子的展示，相信你已经发现，当我们能够通过前面学的 5 个函数拿到几乎所有
+			想要的结果时，为什么还要使用循环来查询数据呢？</p>
 	</div>
 
 
