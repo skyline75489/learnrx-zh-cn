@@ -3445,7 +3445,7 @@
 		</textarea>
 		<button class="go">运行</button>
 		<div class="output" style="text-align:center">
-			<button class="button" id="thisfirstbutton">Click this button after running the program</button>
+			<button class="button" id="thisfirstbutton">运行程序后点击这个按钮</button>
 		</div>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
@@ -3489,7 +3489,7 @@
 		</textarea>
 		<button class="go">运行</button>
 		<div class="output" style="text-align:center">
-			<button class="button">Click this button after running the program</button>
+			<button class="button">运行程序后点击这个按钮</button>
 		</div>
 		<pre class="verifier">
 			// Combine videos and bookmarks 2
@@ -3516,11 +3516,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 30: Completing Sequences with take()</h4>
+		<h4>练习 30: 使用 take() 来结束一个序列</h4>
 
-		<p><b>Have you ever wished that you could listen for the next occurrence of an event and then immediately
-			unsubscribe?</b> For example, developers will often attach an event handler to window.onload, expecting that
-			their event handler will only be called once.</p>
+		<p><b>你有没有希望你可以监听一个事件的下一次出现，然后立马取消订阅？</b>
+			例如，开发者们经常想订阅 window.onload 事件，同时期望他们的事件处理器只被调用一次。</p>
 		<pre>
 			window.addEventListener(
 				"load",
@@ -3528,10 +3527,9 @@
 					// do some work here, but expect this function will only be called once.
 				})
 		</pre>
-		<p>In instances such as this, it's good practice to unsubscribe from the event after it's fired. Failing to
-			unsubscribe is a <b>memory leak</b>. Depending on the circumstances, memory leaks can seriously destablize your
-			application and can be very difficult to track down. Unfortunately unsubscribing from an event after one
-			occurrence can be cumbersome:
+		<p>类似这样的例子当中，当事件发生之后立马取消订阅，是一个很好的习惯。没有正确取消订阅，会导致<b>内存泄露</b>。
+			根据实际情况不同，内存泄露有可能严重地影响你的应用的可靠性，而且有可能难以追踪到问题根源。
+			不幸的是，取消订阅事件的操作，有时候并不简单：
 		</p>
 		<pre>
 			var handler = function() {
@@ -3540,20 +3538,19 @@
 			};
 			window.addEventListener("load", handler);
 		</pre>
-		<p>Wouldn't it be nice if there was an easier way to code this? That's why Observable has a take() function. The
-			take() function works like this...
+		<p>如果能有更简单的方式做到这一点，岂不是会更好？这就是为什么 Observable 有一个 take() 方法。
+			take() 方法的用法是这样的...
 		</p>
 		<pre>
 			seq([1,,,2,,,3,,,4,,,5,,,6,,,]).take(3) === seq([1,,,2,,,3]);
 		</pre>
-		<p>An Observable based on an Event will <u>never</u> complete on its own. The take() function creates a new sequence
-			that completes after a discrete number of items arrive. This is important, because unlike an Event, <i>when an
-				Observable sequence completes it unsubscribes all of its listeners.</i> That means that <b>if we use take()
-				to complete our Event sequence, we don't need to unsubscribe!</b>
+		<p>基于事件的 Observable <u>永远不会</u>自己结束。 take() 方法会创建一个新的序列，这个序列，在固定数量的元素到达之后，就会结束。
+			这是一个很重要的点，因为和事件不同，<i>当一个 Observable 序列结束时，它会自动取消所有的监听者的订阅</i>。 这就意味着，
+			<b>如果我们使用 take() 来结束事件序列，我们不再需要手动取消订阅了！</b>
 		</p>
 
-		<p>Let's repeat the previous exercise, in which we listened for a single button click and then unsubscribed. This
-			time let's use the take() function to complete the sequence after the button is clicked.</p>
+		<p>让我们重复前面的练习，在上个练习里，我们监听了一个按钮点击的事件，然后取消订阅。
+			这次我们使用 take() 在按钮被点击的时候，结束这个序列。</p>
 		<textarea class="code" rows="60" cols="80">
 			function(button) {
 				var buttonClicks = Observable.fromEvent(button, "click");
@@ -3596,8 +3593,8 @@
 			}
 		</pre>
 		<div class="post">
-			<p>The take() function is great way of listening for a discrete number of events and then unsubscribing, but
-				Observable has an even <i>more</i> flexible function that we can use to complete sequences...</p>
+			<p>take() 对于监听固定次数的事件然后取消订阅来说，是一个非常好用的方法，
+				然而 Observable 还有 <i>更加</i> 灵活的方法可以用来结束序列...</p>
 		</div>
 	</div>
 
