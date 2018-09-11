@@ -3425,10 +3425,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 28: Subscribing to an event</h4>
+		<h4>练习 28: 订阅一个事件</h4>
 
-		<p>You're probably used to thinking about events as a list of handlers stored in an object. In this example, we
-			subscribe to a button click event and then unsubscribe the first time the button is clicked.</p>
+		<p>过去你可以把事件看成是存储在一个对象里的一系列 handler 的 list。在这个例子里，我们订阅一个按钮点击的事件，然后在按钮被点击一次之后，就取消订阅。
+		</p>
 		<textarea class="code" rows="60" cols="80">
 			function(button) {
 				// the button click handler
@@ -3457,9 +3457,9 @@
 				fun(button);
 			}
 		</pre>
-		<p class="post">Ask yourself this question: <b>How is subscribing to an event different than traversing an
-			array?</b> Both operations involve sending a listener a sequence of items by repeatedly invoking a function. So
-			why can't we traverse Arrays and Events the same way?</p>
+		<p class="post">问你自己这样一个问题：<b>订阅一个事件和遍历一个数组有什么不同？</b>
+			这两个操作都是通过重复调用一个函数，给监听者发送一系列的数据。为什么我们不能使用相同的方式
+			遍历数组和事件呢？</p>
 	</div>
 
 
@@ -3467,11 +3467,11 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 29: Traversing an Event</h4>
+		<h4>练习 29: 遍历事件</h4>
 
-		<p>Subscribing to an Event and traversing an Array are fundamentally the same operation. The only difference is that
-			<b>Array traversal is synchronous and completes, and Event traversal is asynchronous and <u>never completes</u>.</b>
-			If we convert a button click Event to an Observable object, we can use forEach() to traverse the Event.</p>
+		<p>订阅一个事件（Event）和遍历一个数组，本质上是相同的操作。唯一的区别在于，
+			<b>数组遍历是同步的，而且一定会结束，而事件的遍历是异步的，同时<u>永远不会结束</u>。</b>
+			如果我们把按钮点击事件转换为一个 Observable 对象，我们就可以使用 forEach() 来遍历这个事件。</p>
 		<textarea class="code" rows="60" cols="80">
 			function(button) {
 				var buttonClicks = Observable.fromEvent(button, "click");
@@ -3502,15 +3502,12 @@
 			}
 		</pre>
 		<div class="post">
-			<p>Notice that <b>Observable's forEach() function returns a Subscription object.</b> Disposing of a Subscription
-				object unsubscribes from the event and prevents memory leaks. Disposing of a subscription is the
-				asynchronous equivalent of stopping half-way through a counting for loop.</p>
+			<p>注意 <b>Observable 的 forEach() 方法返回了一个 Subscription 对象。</b> 销毁（Dispose）这个 Subscription
+				对象会取消对于事件的订阅，防止内存泄露。 销毁 subscription 相当于是异步版本的在循环过程中 break 出去。</p>
 
-			<p>Disposing of a Subscription object is basically the same as calling removeEventListener(). On the surface,
-				these two approaches to Event handling don't seem to be very different. Under the circumstances, why should
-				we bother converting Events to Observables? The reason is that <b>if we convert Events to Observable
-					Objects, we can use powerful functions to transform them.</b> In the next exercise we'll learn how we
-				can use one such function to avoid dealing with Subscriptions in many cases...</p>
+			<p>销毁 Subscription 对象基本上和调用 removeEventListener() 是一样的。表面上看来，这两种事件处理的方式并没有那么不同。
+				这样看来，为什么我们还要费力去把事件转换成 Observables 呢？原因是，<b>如果我们把事件转换成 Observable，我们就能够
+				使用强大的函数操作来对它进行变换。</b> 在下一个练习中，我们将学习如何使用这样的函数，在很多情况下避免对于 Subscriptions 的处理...</p>
 		</div>
 	</div>
 
