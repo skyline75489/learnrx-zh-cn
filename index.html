@@ -4501,7 +4501,7 @@
 			我们希望有可能对用户的输入进行 throttle，这样我们就能够实现，如果他们在 1 秒钟没有操作，然后我们再拿用户的输入。
 			例如，当用户点击一个保存按钮很多次的时候，我们只在他们不操作 1 秒钟之后，才执行一次保存操作。</p>
 		<pre>
-			seq([1,2,3,,,,,,,4,5,6,,,]).throttle(1000 /* ms */) === seq([,,,,,,,3,,,,,,,,,,6,,,]);
+			seq([1,2,3,,,,,,,4,5,6,,,]).throttleTime(1000 /* ms */) === seq([,,,,,,,3,,,,,,,,,,6,,,]);
 		</pre>
 
 		<textarea class="code" rows="60" cols="80">
@@ -4593,7 +4593,7 @@
 
 		<button class="go">运行</button>
 
-		<label for="inputName">Name</label>
+		<label for="inputName">姓名</label>
 		<input type="text" class="inputName">
 
 		<ul class="searchResultsForAutoComplete"></ul>
@@ -4661,11 +4661,10 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>练习 40: Distinct Until Changed Input</h4>
+		<h4>练习 40: 仅当数据改变时才触发输入</h4>
 
-		<p>You'll notice in the previous exercise that if you pressed your arrow keys while inside the textbox, the query
-			will still fire, regardless of whether the text actually changed or not. How do we prevent that? The
-			distinctUntilChanged filters out successive repetitive values.</p>
+		<p>你可能注意到，在前面的练习中，如果你在输入框中按下方向键，不管文本本身有没有变化，都会触发一次查询。
+			怎么样避免这个问题呢？Rx 提供了 distinctUntilChanged 用于过滤掉连续而且重复的输入值。</p>
 		<pre>
 			seq([1,,,1,,,3,,,3,,,5,,,1,,,]).distinctUntilChanged() ===
 			seq([1,,,,,,,3,,,,,,,5,,,1,,,]);
@@ -4691,9 +4690,9 @@
 
 		<button class="go">运行</button>
 
-		<label for="inputName">Enter Keys</label>
+		<label for="inputName">按下按键</label>
 		<input type="text" class="inputName">
-		<div>Keys filtered by distinctUntilChanged: <strong class="filteredKeysByDistinct"></strong></div>
+		<div>被 distinctUntilChanged 过滤后的按键： <strong class="filteredKeysByDistinct"></strong></div>
 		<button class="showAnswer">显示答案</button>
 
         <pre class="verifier">
@@ -4721,17 +4720,16 @@
 			function (keyPresses, isAlpha) {
 
 				return keyPresses.
-					map(function (e) { return String.fromCharCode(e.keyCode); }).
+					map(function (e) { return String.fromCharCode(e.charCode); }).
 					filter(function (character) { return isAlpha(character); }).
 					distinctUntilChanged().
-					scan('', function (stringSoFar, character) {
+					scan(function (stringSoFar, character) {
 						return stringSoFar + character;
 					});
 			}
         </pre>
 		<div class="post">
-			<p>Now that we know how to get only the distinct input, let's see how it applies to our autocomplete
-				example...</p>
+			<p>现在我们知道了如何只在输入发生变化时才得到输入，下面我们看下如何将它应用在自动完成输入框的例子里...</p>
 		</div>
 	</div>
 
@@ -4740,15 +4738,15 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 41: Autocomplete Box Part 2: Electric Boogaloo</h4>
+		<h4>Exercise 41: 自动补全输入框 2</h4>
 
-		<p>In the previous version of the autocomplete box, there were two bugs</p>
+		<p>在前一个自动补全框中，有下面两个 bug</p>
 		<ul>
-			<li>Multiple successive searches are made for the same string</li>
-			<li>Attempts are made to retrieve results for an empty string.</li>
+			<li>对同一个字符串发送了多个相同的查询请求</li>
+			<li>对于空字符串也试图获取结果</li>
 		</ul>
 
-		<p>The example below is the same as above, but this time, fix the bugs!</p>
+		<p>下面的例子和之前是一样的，不过这次把 bug 修复好！</p>
 		<pre>
 			getSearchResultSet('react') === seq[,,,["reactive", "reaction","reactor"]]
 			keyPresses === seq['r',,,,,'e',,,,,,'a',,,,'c',,,,'t',,,,,]
@@ -4762,7 +4760,7 @@
 						map(function () {
 							return textBox.value;
 						}).
-						throttle(1000).
+						throttleTime(1000).
 
 						// TODO: Make sure we only get distinct values
 
@@ -4795,7 +4793,7 @@
 						return x.indexOf(text) === 0;
 					});
 
-					return Rx.Observable.returnValue(
+					return Rx.Observable.of(
 						matched.slice(0, 10)
 					);
 				};
@@ -4825,7 +4823,7 @@
 						map(function () {
 							return textBox.value;
 						}).
-						throttle(1000).
+						throttleTime(1000).
 						distinctUntilChanged().
 						filter(function (s) { return s.length > 0; }).
 						concatMap(function (text) {
@@ -4836,9 +4834,8 @@
 			}
         </pre>
 		<div class="post">
-			<p>With just this little amount of code, we're able to produce a fully functioning autocomplete scenario. But
-				there are other outstanding questions, such as error handling. How can we handle failure and retry if
-				necessary?</p>
+			<p>只需要这么几行代码，我们就构建出了一个完全可用的自动补全功能。但是还有其他明显的问题我们没有处理，例如错误处理。
+				我们如何处理错误并且在必要的情况下进行重试呢？</p>
 		</div>
 	</div>
 
@@ -4847,79 +4844,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 42: Retrying after errors</h4>
-
-		<p>You'll notice in the previous exercise that if you pressed your arrow keys while inside the textbox, the query
-			will still fire, regardless of whether the text actually changed or not. How do we prevent that? The
-			distinctUntilChanged filters out successive repetitive values.</p>
-		<pre>
-			seq([1,,,1,,,3,,,3,,,5,,,1,,,]).distinctUntilChanged() ===
-			seq([1,,,,,,,3,,,,,,,5,,,1,,,]);
-		</pre>
-
-		<textarea class="code" rows="60" cols="80">
-			function (keyPresses, isAlpha) {
-
-				return keyPresses.
-					map(function (e) { return String.fromCharCode(e.keyCode); }).
-
-					// Ensure we only have alphabetic characters
-					filter(function (character) { return isAlpha(character); }).
-
-					// TODO: Filter out successive repetitive keys
-
-					// Building up a string of all the characters typed.
-					scan('', function (stringSoFar, character) {
-						return stringSoFar + character;
-					});
-			}
-		</textarea>
-
-		<button class="go">运行</button>
-
-		<label for="inputName">Enter Keys</label>
-		<input type="text" class="inputName">
-
-		<div>Keys filtered by distinctUntilChanged</div>
-		<div class="filteredKeysByDistinct"></div>
-
-		<button class="showAnswer">显示答案</button>
-
-        <pre class="verifier">
-			function(str, lesson) {
-				preVerifierHook();
-				var $inputName = $('.inputName', lesson),
-					$filtered = $('.filteredKeysByDistinct', lesson);
-
-				var keyups = Rx.Observable.fromEvent($inputName[0], 'keyup');
-
-				var isAlpha = function (x) {
-					return 'abcdefghijklmnopqrstuvwxyz'.indexOf(x.toLowerCase()) !== -1;
-				};
-
-				var code =  eval("(" + str + ")")
-				var code = code(keyups, isAlpha);
-
-				code
-					.subscribe(function (text) {
-						$filtered.text(text);
-					});
-			}
-		</pre>
-        <pre class="answer">
-			function (keyPresses, isAlpha) {
-
-				return keyPresses.
-					map(function (e) { return String.fromCharCode(e.keyCode); }).
-					filter(function (character) { return isAlpha(character); }).
-					distinctUntilChanged().
-					scan('', function (stringSoFar, character) {
-						return stringSoFar + character;
-					});
-			}
-        </pre>
-		<div class="post">
-			<p>Now that we know how to get only the distinct input, let's see how it applies to our autocomplete example...</p>
+		<h4>Exercise 42: 错误重试</h4>
 
 			<h1>A Work in Progress</h1>
 
