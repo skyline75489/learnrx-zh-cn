@@ -3257,7 +3257,7 @@
 
 			}
         </pre>
-		<p class="post">哇！这是个很长的查询，但是代码相对于它做的事情来说，并不算很长。如果我们使用传统的循环操作，代码的可读性
+		<p class="post">喔！这是个很长的查询，但是代码相对于它做的事情来说，并不算很长。如果我们使用传统的循环操作，代码的可读性
 			会大大下降。循环不能告诉读者所进行的操作是什么。当你看到一个循环的时候，你需要仔细阅读循环体中的代码，才能知道它是在
 			做什么。它是在投影？还是在过滤？还是在缩减？通过例子的展示，相信你已经发现，当我们能够通过前面学的 5 个函数拿到几乎所有
 			想要的结果时，为什么还要使用循环来查询数据呢？</p>
@@ -3603,30 +3603,29 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 31: Completing sequences with takeUntil()</h4>
+		<h4>练习 31: 使用 takeUntil() 来结束序列</h4>
 
-		<p><b>Have you ever wanted to unsubscribe from one Event when another Event fires?</b> Observable's takeUntil() function
-		is a convenient way of completing a sequence when another Event occurs.</b> Here's how takeUntil() works:
+		<p><b>你有没有这种时候，需要在一个 Event 触发的时候，结束订阅当前的 Event ？</b> Observable 的 takeUntil() 方法可以用于
+		可以在另一个 Event 触发的时候，结束掉一个序列。</b> takeUntil() 用法是这样的：
 		</p>
 		<pre>
 			var numbersUntilStopButtonPressed =
 				seq(              [ 1,,,2,,,3,,,4,,,5,,,6,,,7,,,8,,,9,,, ]).
 					takeUntil(seq([  ,,, {eventType: "click"},,, ]) )                    === seq([ 1,,,2 ])
 		</pre>
-		<p>Earlier we (unknowningly) built a dynamic Microsoft price stock ticker using Observable. The problem with that stock
-			ticker was that <i>it kept going on forever</i>. If left unchecked, all the entries in the log could use up all of
-			the memory on the page. In the exercise below, filter the Observable sequence of NASDAQ prices for MSFT stock
-			prices, use the fromEvent() function to create an Observable .
+		<p>前面的练习中我们（在不了解内情的情况下）使用 Observable 构造了一个微软股票的报价机。这个报价机的一个问题是，
+			 <i>它会一直报价，不会停止。</i>。如果不处理这种情况，在日志中的所有输出有可能用光页面的全部内存。
+			 在下面的练习中，过滤出 Observable 中 NASDAQ 所有 MSFT 股票价格，使用 fromEvent() 创建基于事件的 Observable。
 		</p>
 		<textarea class="code" rows="60" cols="80">
 			function(pricesNASDAQ, printRecord, stopButton) {
-				var stopButtonClicks = // ----- To finish this expression, use Observable.fromEvent to convert the "click" event on the stop button to an Observable
+				var stopButtonClicks = // ----- 使用 Observable.fromEvent 把 stopButton 上的 "click" 事件转化为 Observable
 					microsoftPrices =
 						pricesNASDAQ.
 							filter(function(priceRecord) {
 								return priceRecord.name === "MSFT";
 							}).
-							// ----- To finish this expression, use takeUntil to complete the sequence when stopButtonClicks fires.
+							// ----- 使用 takeUntil 在 stopButtonClicks 触发时结束当前序列
 
 				microsoftPrices.
 					forEach(function(priceRecord) {
@@ -3636,9 +3635,9 @@
 		</textarea>
 		<button class="go">运行</button>
 		<button class="showAnswer">显示答案</button>
-		<button class="stop">Stop</button>
-		&lt;-Press this button to complete the sequence of microsoft stock prices.
-		<p>Console</p>
+		<button class="stop">结束</button>
+		&lt;-按下这个按钮，结束微软股票价格的序列。
+		<p>命令行输出</p>
 
 		<div class="output" style="height:200px;overflow:scroll">
 		</div>
@@ -3690,45 +3689,43 @@
 			}
 		</pre>
 		<div class="post">
-			<p>We've learned that Observable sequences are much more powerful than raw events, because they can complete. <b>The
-				take() and takeUntil() functions are powerful enough to ensure that we never have to unsubscribe from another event
-				again!</b> This reduces the risk of memory leaks and makes our code more readable.
+			<p>我们现在了解到了，Observable 序列比原始的 Event 更加强大，因为它们可以自己结束。<b>
+				take() 和 takeUntil() 两个方法如此强大，我们再也不需要手动去掉订阅事件了！</b>
+				这减少了内存泄露的风险，也提高了代码的可读性。
 			</p>
 
-			<p>Here's what we learned in this section:</p>
+			<p>我们在这节内容中学到了下面的内容：</p>
 			<ul>
-				<li>We can traverse Observables using forEach().</li>
-				<li>We can use fromEvent() to convert Events into Observables that never complete.</li>
-				<li>We can apply take() and takeUntil() to an Observable to create a new sequence which <i>does</i> complete.</li>
+				<li>我们可以使用 forEach() 遍历 Observables。</li>
+				<li>我们可以使用 fromEvent() 把 Events 转换成永不结束的 Observables。</li>
+				<li>我们可以在 Observable 上使用 take() 和 takeUntil() 创建一个 <i>会结束</i> 的序列。</li>
 			</ul>
-			<p>In the next section we'll learn how to combine events to create more complex events. You'll be suprised how easily
-				you can solve complex, asynchronous problems!
+			<p>在下面的内容中我们将学习如果将若干 Event 结合起来，构造更加复杂的 Event。你会发现解决复杂的异步问题，竟然变得如此简单！
 			</p>
 
-			<h3>Querying Observables</h3>
+			<h3>查询 Observables</h3>
 
-			<p>What's the difference between these two tasks?</p>
+			<p>下面这两个任务，有什么区别？</p>
 			<ul>
-				<li>Creating a flat list of movies with a rating of 5.0 from a bunch of movie lists.</li>
-				<li>Creating a sequence of all the mouse drag events from the mouseDown, mouseMove, and mouseUp events.</li>
+				<li>从一堆 movie 列表中创建一个打平的 rating 为 5.0 的 movie 的列表。</li>
+				<li>创建一个所有鼠标事件的序列，包括 mouseDown，mouseMove 和 mouseUp 事件。</li>
 			</ul>
-			<p>You might think of them as different, and might code them very differently, but <b>these tasks are fundamentally the
-				same.</b> Both of these tasks are <i>queries</i>, and can be solved using the functions you've learned in these
-				exercises.
+			<p>你可能觉得它们没什么共同点，写出来的代码也有很大差别。但是实际上 <b>这些任务本质上是相同的</b>。 它们都是 <i>查询</i>，
+				它们都可以使用前面的练习中学过的函数解决。
 			</p>
 
-			<p><b>The difference between traversing an Array and traversing an Observable is <i>the direction in which the data
-				moves.</i></b> When traversing an Array, the client <i>pulls</i> data from the data source, blocking until it gets a
-				result. When traversing Observables, the data source <i>pushes</i> data at the client whenever it arrives.
+			<p><b>遍历数组和遍历 Observable 的区别在于<i>数据移动的方向</i>。</b> 遍历数组时，遍历者从数据源 <i>拉取</i> 数据，在拿到结果之前，会一直阻塞。
+				遍历 Observables 时，数据源在数据到达时，将数据 <i>推送</i> 给遍历者。
 			</p>
 
-			<p>It turns out that the direction in which data moves is <i>orthogonal</i> to querying that data. In other words, <b>when
-				we're querying data it doesn't matter whether we pull data, or data is pushed at us.</b> In either case the query
-				methods make the same transformations. The only thing that changes is the input and output type respectively. If we
-				filter an Array, we get a new Array. If we filter an Observable, we get a new Observable, and so on.
+			<p>数据移动的方向，和查询数据的方式，两者的关系是<i>正交</i>的。换句话说
+				<b>
+				对于查询来说，拉取数据，或者数据被推送给我们，两者是没有实际差别的。
+			</b>不管使用哪种方式，查询函数所进行的变换操作是一致的。
+			唯一的区别是输入和输出的类型。如果我们过滤一个数组，我们得到的就是数组。如果我们过滤一个 Observable，就会得到一个 Observable，以此类推。
 			</p>
 
-			<p>Take a look at how the query methods transform Observables and Arrays:</p>
+			<p>我们看一下查询函数是如何对 Observables 和数组进行变换的：</p>
 			<pre>
 				// <b>map()</b>
 
@@ -3747,38 +3744,32 @@
 				[ [1, 2, 3], [4, 5, 6] ].concatAll()                             === [1,2,3,4,5,6]
 				seq([ seq([1,,,2,,,3]),,,seq([4,,,5,,,6]) ]).concatAll()         === seq([1,,,2,,,3,,,4,,,5,,,6])
 
-				// If a new sequence arrives before all the items
-				// from the previous sequence have arrived, no attempt
-				// to retrieve the new sequence's elements is made until
-				// the previous sequence has completed. As a result the
-				// order of elements in the sequence is preserved.
+				// 如果新序列中的元素在前面的序列所有元素到达之前，提前到达，
+				// 直到前面序列结束之后，才会试图去取新序列中的元素。
+				// 这样序列当中元素的顺序得以保留。
 				seq([
 					seq([1,,,, ,2, ,3])
 					,,,seq([,,4, ,5, ,,6]) ]).
 					concatAll()                                                  === seq([1,,,,,2,,3,,4,,5,,,6])
 
-				// Notice that as long as at least one sequence being
-				// concatenated is incomplete, the concatenated sequence is also
-				// incomplete.
+				// 注意只要有一个序列是不会结束的，那么组合起来的序列也是不会结束的
 				seq([
 					seq([1,, ,,, ,,,2,,,3])
 					,,,seq([4,,,5,,, ,,, ,,6,,,]) ]).
-					concatAll()                                                  === seq([1,,,4,,,5,,,2,,,3,,,6,,,])
+					concatAll()                                                  === seq([1,,,,,,,,2,,,3,4,,,5,,,,,,,,6,,,])
 
 				// <b>reduce()</b>
 
 				[ 1, 2, 3 ].reduce(sumFunction)                                 === [ 6 ]
 				seq([ 1,,,2,,,3 ]).reduce(sumFunction)                          === seq([,,,,,,6])
 
-				// Reduced sequences do <u>not</u> complete until the
-				// sequence does.
+				// 如果被缩减的序列不结束，那么缩减的序列 <u>不会</u> 结束。
 				seq([ 1,,,2,,,3,,, ]).reduce(sumFunction)                       === seq([ ,,,,,,,,,])
 
 				// <b>zip()</b>
 
-				// In both Arrays and Observables, the zipped sequence
-				// completes as soon as either the left or right-hand
-				// side sequence completes.
+				// 对于数组和 Observables，合并的序列会在左边或者右边序列
+				// 当中有一个结束时，自己结束。
 				Array.zip([1,2],[3,4,5], sumFunction)                           === [4,6]
 				Observable.zip(seq([1,,,2]),seq([3,,,4,,,5]), sumFunction)      === seq([4,,,6])
 
@@ -3789,24 +3780,23 @@
 
 				// <b>takeUntil()</b>
 
-				// takeUntil works for Arrays, but it's not very useful
-				// because the result will always be an empty array.
+				// takeUntil 可以用于数组，不过实际用处并不大。
+				// 因为它的结果永远是一个空数组
 				[1,2,3].takeUntil([1])                                          === []
 
 				seq([1,,,2,,,3,,, ]).takeUntil(
 				seq([ ,,, ,,4 , }))                                             === seq([ 1,,,2 ])
 
 			</pre>
-			<p>Remember when I <a href="#indexers">prohibited the use of array indexers?</a> The reason for that restriction should
-				now become clearer to you. Whereas the 5 functions can be used on <i>any</i> collection, indexers can only be used
-				on collections that support random-access (like Array). If you avoid indexers and stick to the functions you've
-				learned in this tutorial, you'll have a unified programming model for transforming <i>any</i> collection. Having a
-				unified programming model makes it trivial to convert synchronous code to asynchronous code, a process which would
-				otherwise be very difficult. As we've demonstrated, you don't need indexers to perform complex collection
-				transformations.</p>
+			<p>还记得我们之前<a href="#indexers">禁止使用数组下标吗</a>？这样做的原因，现在你应该清楚了。
+				这 5 个方法可以用于 <i>任意</i> 集合类型，但是数组下标只能用于支持随机访问（例如数组）的集合。
+				如果你一直不使用数组下标，你会掌握一个统一的编程模型，这个模型适用于 <i>任意</i> 集合类型。
+				统一的编程模型让同步代码到异步代码的转换过程变得简单得多。反之如果没有统一模型的帮助，这样的转换会非常困难。
+			    我们也已经展示过了，哪怕是进行很复杂的集合变换操作，你也完全不需要使用下标。</p>
 
-			<p>Now that we've seen that we can query asychronous and synchronous data sources using the same programming model,
-				let's use Observable and our query functions to create complex new events.</p>
+			<p>现在我们已经可以使用同一个编程模型查询异步和同步的数据源了。
+				下面我们试着用 Observable 和查询函数，创建新的事件。
+			</p>
 		</div>
 	</div>
 
@@ -3815,14 +3805,13 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 32: Creating a mouse drag event</h4>
+		<h4>练习 32: 创建鼠标拖动事件</h4>
 
-		<p>Remember the exercise we solved earlier? The one in which we retrieved all the movies with a rating of 5.0 from
-			an array of movie lists? If we were to describe the solution in pseudocode it might read something like
-			this...
+		<p>记得前面的练习中我们解决过的一个问题吗？我们从一个 movie list 的数组中，取出了所有 rating 为 5.0 的数据。
+			如果使用伪代码来表达，看起来类似下面这样...
 		</p>
 
-		<p><b>"For every movie list, retrieve only those videos with a rating of 5.0"</b></p>
+		<p><b>“对每个 movie list，取出那些 rating 为 5.0 的 video”</b></p>
 		<pre>
 			var moviesWithHighRatings =
 				movieLists.
@@ -3833,15 +3822,15 @@
 							});
 					});
 		</pre>
-		<p>Now we're going to create a mouseDrag event for a DOM object. If we were to describe <i>this</i> problem as
-			pseudocode it might read something like this...
+		<p>现在，我们要从 DOM 对象中创建一个 mouseDrag 鼠标拖动事件。如果我们也想用伪代码表达 <i>这个</i> 问题，
+			看起来可能类似下面这样...
 		</p>
 
-		<p><b>"For every
+		<p><b>“对每个
 			<del>movie list</del>
-			mouse down event on the sprite, retrieve only those
-			<del>videos with a rating of 5.0</del>
-			mouse move events that occur before the next mouse up event."</b>
+			mouse down 事件， 取出那些
+			<del>rating 为 5.0 的 video</del>
+			在下一个 mouse up 事件触发之前的 mouse move 事件”</b>
 		</p>
 		</p>
 		<textarea class="code" rows="60" cols="80">
@@ -3868,8 +3857,8 @@
 		</textarea>
 		<button class="go">运行</button>
 		<!-- <button class="showAnswer">显示答案</button> -->
-		<button class="resetSprite">Reset Sprite</button>
-		<div class="control output container" style="height:200px;text-align:center">
+		<button class="resetSprite">重置 Sprite</button>
+		<div class="control output container" style="width:100%;height:200px;text-align:center">
             <span class="control sprite" style="position:absolute; border: solid 1px black; background-color: white;z-index:23">
                 Sprite
             </span>
@@ -3914,9 +3903,9 @@
 				});
 			}
         </pre>
-		<p class="post">Now we're really cooking. We just created a complex event with a few lines of code. We didn't have to
-			deal with any subscriptions objects, or write any stateful code whatsoever. Let's try something a little
-			harder.</p>
+		<p class="post">现在我们才算出师了。我们刚刚只用几行代码就创建一个复杂的事件。
+			我们甚至都没有处理任何 subscriptions 对象，也没有写任何状态处理的代码。
+			下面我们再来试试更难的挑战。</p>
 	</div>
 
 
@@ -3924,33 +3913,31 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 33: Improving our mouse drag event</h4>
+		<h4>练习 33: 优化鼠标拖动事件</h4>
 
-		<p>Our mouse drag event is a little <i>too</i> simple. Notice that when we drag around the sprite, it always
-			positions itself at the top-left corner of the mouse. Ideally we'd like our drag event to offset its
-			coordinates, based on where the mouse was when the mouse down event occurred. This will make our mouse drag more
-			closely resemble moving a real object with our finger.
+		<p>我们的鼠标拖动事件，有一些 <i>过于</i> 简单了。注意看，当我们拖动 sprite 方框时，它总是把鼠标置于自己的左上角。
+			理想情况中，我们希望拖动事件根据鼠标的 mouse down 事件的坐标，对偏移进行处理。这样我们的鼠标拖动事件就更加接近于
+			使用手指拖动一个真实世界中的物品了。
 		</p>
 
-		<p>Let's see if you can adjust the coordinates in the mouse drag event, based on the mousedown location on the
-			sprite. The mouse events are sequences, and they look something like this:
+		<p>下面我们看一下如何在鼠标拖动事件中，根据 mouse down 的位置，对坐标进行调整。
+			鼠标事件是这样的序列：
 		</p>
 
 		<pre>
 			spriteContainerMouseMoves =
-				seq([ {x: 200, y: 400, offsetX: 10, offsetY: 15},,,{x: 210, y: 410, offsetX: 20, offsetY: 26},,, ])
+				seq([ {x: 200, y: 400, layerX: 10, layerY: 15},,,{x: 210, y: 410, layerX: 20, layerY: 26},,, ])
 		</pre>
 		<p>
-			Each item in the mouse event sequences contains an x, y value that represents that absolute location of the
-			mouse event on the page. The moveSprite() function uses these coordinates to position the sprite. Each item in
-			the sequence <i>also</i> contains a pair of offsetX and offsetY properties that indicate the position of the
-			mouse event relative to the event target.
+			鼠标事件序列中的每个元素都包含一个 x，y，表示鼠标事件在页面上的绝对位置。
+			moveSprite() 方法使用这些坐标来确定位置。同时每个元素又包含一对 layerX 和 layerY 属性，标示鼠标事件相对于 event target 的
+			位置。
 		</p>
 
 		<textarea class="code" rows="60" cols="80">
 			function(sprite, spriteContainer) {
 				// All of the mouse event sequences look like this:
-				// seq([ {pageX: 22, pageY: 3423, offsetX: 14, offsetY: 22} ,,, ])
+				// seq([ {pageX: 22, pageY: 3423, layerX: 14, layerY: 22} ,,, ])
 				var spriteMouseDowns = Observable.fromEvent(sprite, "mousedown"),
 					spriteContainerMouseMoves = Observable.fromEvent(spriteContainer, "mousemove"),
 					spriteContainerMouseUps = Observable.fromEvent(spriteContainer, "mouseup"),
@@ -3968,7 +3955,7 @@
 									// Project each mouse move object into a new object
 									// with adjusted pageX and pageY properties.
 									// Translate each page coordinate based on the value
-									// of the offsetX and offsetY properties in the
+									// of the layerX and layerY properties in the
 									// contactPoint.
 									// -------------------------------------------------
 									// Complete expression...
@@ -3983,8 +3970,8 @@
 		</textarea>
 		<button class="go">运行</button>
 		<button class="showAnswer">显示答案</button>
-		<button class="resetSprite">Reset Sprite</button>
-		<div class="control output container" style="height:200px;text-align:center">
+		<button class="resetSprite">重置 Sprite</button>
+		<div class="control output container" style="width:100%;height:200px;text-align:center">
             <span class="control sprite" style="position:absolute; border: solid 1px black; background-color: white;z-index:23">
                 Sprite
             </span>
@@ -4009,7 +3996,7 @@
 		<pre class="answer">
 			function(sprite, spriteContainer) {
 				// All of the mouse event sequences look like this:
-				// seq([ {pageX: 22, pageY: 3423, offsetX: 14, offsetY: 22} ,,, ])
+				// seq([ {pageX: 22, pageY: 3423, layerX: 14, layerY: 22} ,,, ])
 				var spriteMouseDowns = Observable.fromEvent(sprite, "mousedown"),
 					spriteContainerMouseMoves = Observable.fromEvent(spriteContainer, "mousemove"),
 					spriteContainerMouseUps = Observable.fromEvent(spriteContainer, "mouseup"),
@@ -4025,8 +4012,8 @@
 									takeUntil(spriteContainerMouseUps).
 									map(function(movePoint) {
 										return {
-											pageX: movePoint.pageX - contactPoint.offsetX,
-											pageY: movePoint.pageY - contactPoint.offsetY
+											pageX: movePoint.pageX - contactPoint.layerX,
+											pageY: movePoint.pageY - contactPoint.layerY
 										};
 									});
 							});
@@ -4045,13 +4032,12 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 34: HTTP requests</h4>
+		<h4>练习 34: HTTP 请求</h4>
 
-		<p>Events aren't the only source of asynchronous data in an application. There's also HTTP requests. Most of the
-			time HTTP requests are exposed via a <b>callback-based API</b>. To receive data asynchronously from a
-			callback-based API, the client typically passes a success and error handler to the function. When the
-			asynchronous operation completes, the appropriate handler is called with the data. In this exercise we'll use
-			jQuery's getJSON api to asynchronously retrieve data.
+		<p>事件并不是应用中唯一的异步数据源。还有 HTTP 请求
+			大部分 HTTP 请求是使用 <b>基于回调的 API</b> 暴露给我们使用的。
+			为了从回调中异步地接收数据，调用者一般会给函数传递成功和失败的 handler。当异步操作完成的时候，
+			适当的 handler 就会被调用。在这个练习中，我们使用 jQuery 的 getJSON 来异步地获取数据。
 		</p>
 		<textarea class="code" rows="60" cols="80">
 			function($) {
@@ -4085,29 +4071,27 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 35: Sequencing HTTP requests with callbacks</h4>
+		<h4>练习 35: 串联基于回调的 HTTP 请求</h4>
 
-		<p>Let's say that we're writing the startup flow for a web application. On startup, the application must perform the
-			following operations:</p>
+		<p>现在我们如下给一个 web 应用写一个启动流程。在启动的时候，这个应用需要执行下面的操作：</p>
 		<ol>
-			<li>Download the URL prefix to use for all subsequent AJAX calls. This URL prefix will vary based on what AB
-				test the user is enrolled in.
+			<li>下载一个 URL 前缀，这个前缀会用于后续所有的 AJAX 请求。前缀根据用户参与的 AB 测试而有所不同。
 			</li>
-			<li>Use the url prefix to do the following actions in parallel:
+			<li>使用这个 URL 前缀，并行地做下面几个操作：
 				<ul>
-					<li>Retrieve a movie list array</li>
-					<li>Retrieve configuration information and...
+					<li>获取一个 movie list 数组</li>
+					<li>获取配置信息并且...
 						<ul>
-							<li>make a follow up call for an instant queue list if the config property "showInstantQueue" is
-								truthy
+							<li>
+								当配置 "showInstantQueue" 为 true 的时候，执行一个请求获取 instant queue 列表。
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-			<li>If an instant queue list was retrieved, append it to the end of movie list.</li>
-			<li>If all operations were successful then display the movie lists <i>after</i> the window loads. Otherwise
-				inform the user that there was a connectivity error.
+			<li>当 instant queue 列表获取完成后，把它添加到 movie list 的末尾</li>
+			<li>如果所有的操作都成功完成，那么在 window load 事件 <i>之后</i> 展示 movie list。否则
+				告知用户出现了连接问题。
 			</li>
 		</ol>
 		<textarea class="code" rows="60" cols="80">
@@ -4229,27 +4213,21 @@
 			}
 		</pre>
 		<div class="post">
-			<p>It's fair to say that <b>sequencing HTTP requests with callbacks is <i>very</i> hard.</b> In order to perform
-				two tasks in parallel, we have to introduce a variable to track the status of each task. Every time one of
-				the parallel tasks completes it must check whether its sibling task has also completed. If both have
-				completed, only then can we move forward. In the example above, every time a task is finished the
-				tryToDisplayOutput() function is called to check if the program was ready to display output. This function
-				checks the status of all tasks and displays the output if possible.
+			<p>可以说，<b>串联基于回调的 HTTP 请求 <i>非常</i> 困难。</b>
+				为了并行执行两个任务，我们需要引入一个变量来追踪它们的状态。当其中一个任务完成的时候，需要检查另外一个兄弟任务有没有
+				完成。当两个任务全部完成之后，才能继续执行下一步操作。在上面的例子中，每次任务完成之后，都要调用 tryToDisplayOutput()
+				检查当前程序是不是已经准备好显示输出了。这个函数检查所有任务的状态，并且在可能的情况下，展示所需要的输出结果。
 			</p>
 
-			<p>With a callback-based API, asynchronous error handling is also very complicated. In synchronous programs, a
-				unit of work is cancelled when an exception is thrown. By contrast, in our program we had to explicitly
-				track whether an error occurred in parallel to prevent an unnecessary call for the instant queue. Javascript
-				provides us with special support for synchronous error handling with the keywords try/catch/throw.
-				Unfortunately no such support is available for asynchronous programs.
+			<p>使用基于回调的 API，异步错误处理也非常困难。在同步程序中，当有异常抛出事，一组工作就被取消了。与之相对比。在我们的
+				程序中，我们只能手动追踪是不是在并行过程中有错误发生，避免无用的对于 instant queue 的获取操作。Javascript 对于同步错误处理
+				提供了使用 try/catch/throw 的错误处理支持。不幸的是，在异步程序中没有这种东西。
 			</p>
 
-			<p>The Observable interface is a much more powerful way of working with asynchronous APIs than callbacks. We'll
-				see that Observables can free us from having to track the status of tasks that are run in parallel, just
-				Observables frees us from having to track Event Subscriptions. We'll also see that Observable gives us the
-				same error propagation semantics in asynchronous programs that we expect in synchronous programs. Finally
-				we'll learn that by converting callback-based APIs to Observables, we can query them along with Events to
-				build much more expressive programs.
+			<p>Observable 接口在处理异步 API 上，要比回调强大的多。下面我们将看到，就像 Observables 让我们可以不必操心对于 Event 的订阅
+				Observables 也可以让我们不在需要对并行任务状态进行追踪。 Observable 也能让我们像对同步程序进行错误处理那样，在异步程序中
+				使用相同的错误传导语义。最后我们将学习到，通过把基于回调的 API 转换成 Observables，我们可以联合 Event 一起，对它们进行查询，
+				构造更富表达力的应用程序。
 			</p>
 		</div>
 	</div>
@@ -4259,42 +4237,37 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 36: Traversing callback-based Asynchronous APIs</h4>
+		<h4>练习 36: 遍历基于回调的异步 API</h4>
 
-		<p><b>If a callback API were a sequence, what kind of sequence would it be?</b> We've seen that UI Event sequences
-			can contain anywhere from 0 to infinite items, but will never complete on their own.
+		<p><b>如果回调 API 是一个序列，它会是什么样子的序列？</b> 我们已经看到过，UI 事件的序列可以保护从 0 到无限多个元素，但是它永远不会自己结束。
 		</p>
 		<pre>
 			mouseMoves === seq([ {x: 23, y: 55},,,,,,,{x: 44, y: 99},,,{x:55,y:99},,,{x: 54, y:543},,, ]);
 		</pre>
-		<p>In contrast, if we were to convert output from the $.getJSON() function we've been using into a sequence it would
-			always return a sequence that completes after sending a single item.
+		<p>与之对比，如果我们把 $.getJSON() 的返回转换成序列，它总会返回一个发送完单个元素就自己结束的序列。
 		</p>
 		<pre>
 			getJSONAsObservable("http://api-global.netflix.com/abTestInformation") ===
 				seq([ { urlPrefix: "billboardTest" } ])
 		</pre>
-		<p>It might seem strange to create sequences that contain only one object. We <i>could</i> introduce an
-			Observable-like type specifically for scalar values, but that would make callback-based APIs more difficult to
-			query with Events. Thankfully, an Observable sequence is flexible enough to model both.
+		<p>创建一个仅包含一个元素的序列，听起来可能会有点奇怪。我们 <i>可以</i> 专门为标量值引入一个类似 Observable 的类型，
+			但是那样就会导致基于回调的 API 相比 Event 更加难以查询。幸运的是，Observable 足够灵活，它能够支持这两种模型。
 		</p>
 
-		<p><b>So how do we convert a callback API into an Observable sequence?</b> Unfortunately, because callback-based
-			APIs vary so much in their interfaces, we can't create a conversion function like we did with fromEvent().
-			However there is a more flexible function we can use to build Observable sequences...
+		<p><b>所以我们如何把一个基于回调的 API 转换成 Observable 序列呢？</b> 比较不幸运的是, 因为基于回调的 API 在接口上各有不同，
+			我们没办法像 fromEvent() 那样创建一个统一的转换函数。不过没关系，我们有更灵活的方法来创建 Observable 序列...
 		</p>
 
-		<p><b>Observable.create() is powerful enough to convert any asynchronous API into an Observable.</b>
-			Observable.create() relies on the fact that all asynchronous APIs have the following semantics:
+		<p><b>Observable.create() 是一个可以把任意异步 API 转换成 Observable 的工具。</b>
+			Observable.create() 依赖于这样的事实：所有异步 API 都有下面的语义：
 		</p>
 		<ol>
-			<li>The client needs to be able to receive data.</li>
-			<li>The client needs to be able to receive error information.</li>
-			<li>The client needs to be able to be alerted that the operation is complete.</li>
-			<li>The client needs to be able to indicate that they're no longer interested in the result of the operation.</li>
+			<li>调用者需要能够获取数据。</li>
+			<li>调用者需要能够获取错误信息。</li>
+			<li>调用者需要在操作完成时得到通知。</li>
+			<li>调用者需要有能力表明自己不再需要操作的结果</li>
 		</ol>
-		<p>In the following example, we'll use the Observable.create() function to create an Observable that issues a
-			request to getJSON when it's traversed.
+		<p>在下面的例子里，我们使用 Observable.create() 创建一个，它会在自己被遍历的时候，发送一个 getJSON 请求。
 		</p>
 		<textarea class="code" rows="60" cols="80">
 			function(window, $) {
@@ -4309,16 +4282,16 @@
 										// If client is still interested in the results, send them.
 										if (subscribed) {
 											// Send data to the client
-											observer.onNext(data);
+											observer.next(data);
 											// Immediately complete the sequence
-											observer.onCompleted();
+											observer.complete();
 										}
 									},
 								error: function(ex) {
 									// If client is still interested in the results, send them.
 									if (subscribed) {
 										// Inform the client that an error occurred.
-										observer.onError(ex);
+										observer.error(ex);
 									}
 								}
 							});
@@ -4330,21 +4303,28 @@
 					});
 				};
 
+				var observer = {
+					// onNext in RxJS 4
+					next: function (data) {
+						alert(JSON.stringify(data));
+					},
+					// onError in RxJS 4
+					error: function (err) {
+						alert(err);
+					},
+					// onComplete in RxJS 4
+					complete: function () {
+						alert("The asynchronous operation has completed.");
+					}
+				};
+
 				var subscription =
-					getJSON("http://api-global.netflix.com/abTestInformation").
-						forEach(
-							// observer.onNext()
-							function(data) {
-								alert(JSON.stringify(data));
-							},
-							// observer.onError()
-							function(err) {
-								alert(err)
-							},
-							// observer.onCompleted()
-							function() {
-								alert("The asynchronous operation has completed.")
-							});
+					getJSON("http://api-global.netflix.com/abTestInformation").subscribe(observer);
+
+				// setTimeout(function () {
+				// 	alert("Changed my mind, I do not want notifications any more!")
+				// 	subscription.unsubscribe();
+				// }, 10);
 			}
 		</textarea>
 		<button class="go">运行</button>
@@ -4368,23 +4348,36 @@
 			}
 		</pre>
 		<div class="post">
-			<p>Understand that <b>the function passed to Observable.create() is the definition of the forEach() function for
-				<i>this</i> Observable.</b> In other words, all we have to do to define an Observable is to define its
-				traversal function. Notice that although we pass three functions to the Observable's forEach() function, the
-				function we pass to Observable.create() accepts only one value: an Observer. An Observer is just a triple
-				containing three handlers:</p>
-			<ul>
-				<li>The onNext() handler used to send data to the client.</li>
-				<li>The onError() handler used to send error information to the client.</li>
-				<li>The onCompleted() handler used to inform the client that the sequence has completed.</li>
-			</ul>
-			<p>The three handlers we pass to forEach() are packaged together into a single Observer object for convenience.
-				Finally Observable.create() returns a function that defines the dispose() method of the Subscription object
-				during Traversal. Like the Observer, the Observable.create() function creates the Subscription object for us
-				and uses our function as the dispose() definition.</p>
-
-			<p>Now that we've built a version of the getJSON function that returns an Observable sequence, let's use it to
-				improve our solution to the previous exercise...</p>
+				<p>
+					传递给 Observable.create() 的参数叫做 subscribe 函数。对于创建出的 Observable 可能产生的数据感兴趣的对象（例如一个 Observer）
+					可以通过订阅这个 Observable 来实现对于数据的观察。它们必须实现 Observer 的接口，这样才能保证从 Observable 中获取的数据可以被
+					正确地发送过去。之后，Observers 被当成参数，传递给 Observable 的 subscribe 函数。
+				</p>
+				<p>
+						需要注意的是，subscribe 函数代表一个惰性赋值操作，它仅当 Observer 进行订阅操作时才会执行。
+						当一个 Observer 对 Observable 的数据不再感兴趣时，它应当取消自己的订阅。在 Observable 上调用订阅所返回的值，
+						是一个 Subscription 对象，它代表着一个可销毁的资源。调用 Subscription 的 unsubscribe 会终止当前 Observer 对应
+						的 Observable 的执行。
+					</p>
+					<p>
+						可以看到 Observer 定义了下面三个方法：
+					</p>
+					<ul>
+						<li><b>next()</b>, Observables 用它来传递新数据</li>
+						<li><b>error()</b>, Observables 用它来传递错误信息</li>
+						<li><b>complete()</b>, Observables 用它来通知一个序列的结束</li>
+					</ul>
+					<p>
+						Observers 可以不实现全部的方法（也就是说，可以只实现其中的一部分）。
+						对于没有提供的回调，Observable 依然能够正确执行，只不过某些类型的通知会被忽略掉。
+					</p>
+					<p>
+						在 RxJS 4 和 5 两个版本中，有一些 API 变化，在这里不再赘述。
+						查看 <a href="https://github.com/ReactiveX/rxjs/blob/master/MIGRATION.md">迁移指南</a>
+						可以获得更多信息。
+					</p>
+		
+					<p>现在我们已经创造了一个返回 Observable 序列的 getJSON 方法，下面我们用它来改善上一个练习的代码...</p>
 		</div>
 	</div>
 
@@ -4393,10 +4386,9 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 37: Sequencing HTTP requests with Observable</h4>
+		<h4>练习 37: 串联基于 Observable 的 HTTP 请求</h4>
 
-		<p>Let's use the getJSON function that returns Observables, and the Observable.fromEvent() to complete the exercise
-			we completed earlier.</p>
+		<p>我们使用返回 Observables 的 getJSON 方法，以及 Observable.fromEvent() 完成之前做过的练习。</p>
 		<textarea class="code" rows="60" cols="80">
 			function(window, getJSON, showMovieLists, showError) {
 				var movieListsSequence =
@@ -4493,8 +4485,8 @@
 			}
 		</pre>
 		<div class="post">
-			<p>Almost every workflow in a web application starts with an event, continues with an HTTP request, and results
-				in a state change. Now we know how to express the first two tasks elegantly.</p>
+			<p>几乎所有 web 应用的工作流程都是从事件开始，然后发送 HTTP 请求，最后导致状态变化。
+				现在我们知道如何优雅地完成前面两个任务了。</p>
 		</div>
 	</div>
 
@@ -4503,12 +4495,11 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 38: Throttle Input</h4>
+		<h4>练习 38: Throttle 输入</h4>
 
-		<p>When dealing with user input, there will be times when the user's input is too noisy, and will potentially clog
-			your servers with extraneous requests. We want the ability to throttle the users's input so that if they
-			interacting for one second, then we will get the user input. Let's say for example, the user clicks a button
-			once too many times upon saving and we only want to fire after they've stopped for a second.</p>
+		<p>当处理用户输入的时候，会碰到一些情况，用户的输入太密集，有可能会导致无意义的请求阻塞掉服务器。
+			我们希望有可能对用户的输入进行 throttle，这样我们就能够实现，如果他们在 1 秒钟没有操作，然后我们再拿用户的输入。
+			例如，当用户点击一个保存按钮很多次的时候，我们只在他们不操作 1 秒钟之后，才执行一次保存操作。</p>
 		<pre>
 			seq([1,2,3,,,,,,,4,5,6,,,]).throttle(1000 /* ms */) === seq([,,,,,,,3,,,,,,,,,,6,,,]);
 		</pre>
@@ -4524,9 +4515,9 @@
 		</textarea>
 
 		<button class="go">运行</button>
-		<label for="inputName">Name</label>
+		<label for="inputName">姓名</label>
 		<input type="text" class="inputName"><strong class="savedValue"></strong>
-		<button class="submitInputName">Save</button> <<-- Click this to save your data
+		<button class="submitInputName">保存</button> <<-- 点这里来保存你的数据
 
 		<button class="showAnswer">显示答案</button>
 
@@ -4541,7 +4532,7 @@
 				var clicks = Observable.fromEvent($('.submitInputName', lesson)[0], 'click');
 
 				var code =  eval("(" + str + ")")
-				var code = code(clicks, function(name) { return Rx.Observable.returnValue(name.val()); }, $inputName);
+				var code = code(clicks, function(name) { return Rx.Observable.of(name.val()); }, $inputName);
 
 				code
 					.subscribe(function (data) {
@@ -4552,15 +4543,14 @@
         <pre class="answer">
 			function (clicks, saveData, name) {
 				return clicks.
-					throttle(1000).
+				    throttleTime(1000).
 					concatMap(function () {
 						return saveData(name);
 					})
 			}
         </pre>
 		<div class="post">
-			<p>Now that we know how to throttle input, let's take a look at another problem where throttling data is
-				important...</p>
+			<p>现在我们知道怎么对输入进行 throttle 了，我们来看一个问题，这个问题当中对数据的 throttle 是很重要的...</p>
 		</div>
 	</div>
 
@@ -4569,12 +4559,11 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 39: Autocomplete Box</h4>
+		<h4>练习 39: 自动补全输入框</h4>
 
-		<p>One of the most common problems in web development is the autocomplete box. This seems like it should be an easy
-			problem, but is actually quite challenging. For example, how do we throttle the input? How do we make sure we're
-			not getting out of order requests coming back? For example if I type "react" then type "reactive" I want
-			"reactive" to be my result, regardless of which actually returned first from the service.</p>
+		<p>在 web 开发中最常见的问题之一，就是自动补全输入框。这个问题看起来应该很简单，然而实际上却相当有挑战性。
+			例如如何 throttle 用户的输入？怎么保证请求返回的顺序不是错乱的？例如如果我打出了 "react" 然后打 "reactive"，我希望
+			我得到的结果是 "reactive"，不管服务端返回的结果是什么。</p>
 
 		<p>In the example below, you will be receiving a sequence of key presses, a textbox, and a function when called
 			returns an array of search results.</p>
@@ -4623,7 +4612,7 @@
 						return x.indexOf(text) === 0;
 					});
 
-					return Rx.Observable.returnValue(
+					return Rx.Observable.of(
 						matched.slice(0, 10)
 					);
 				};
@@ -4653,7 +4642,7 @@
 						map(function () {
 							return textBox.value;
 						}).
-						throttle(1000).
+						throttleTime(1000).
 						concatMap(function (text) {
 							return getSearchResultSet(text).takeUntil(keyPresses);
 						});
@@ -4662,8 +4651,8 @@
 			}
         </pre>
 		<div class="post">
-			<p>Now that we're able to query with our throttled input, you'll still notice one slight problem. If you hit
-				your arrow keys or any other non character key, the request will still fire. How do we prevent that?</p>
+			<p>现在我们可以使用 throttle 之后的输入查询了，你可能还注意到了一个小问题。如果你按下键盘上的方向键或者其他非字母的键，
+				请求依然会被触发，如何避免这个问题呢？</p>
 		</div>
 	</div>
 
@@ -4672,7 +4661,7 @@
 
 	<!-- ************************* LESSON ************************* -->
 	<div class="lesson">
-		<h4>Exercise 40: Distinct Until Changed Input</h4>
+		<h4>练习 40: Distinct Until Changed Input</h4>
 
 		<p>You'll notice in the previous exercise that if you pressed your arrow keys while inside the textbox, the query
 			will still fire, regardless of whether the text actually changed or not. How do we prevent that? The
@@ -4989,7 +4978,7 @@
 <script src="assets/codemirror/codemirror.js"></script>
 <script src="assets/app/javascript.js"></script>
 
-<script src="assets/rx/rx.all.js"></script>
+<script src="assets/rx/Rx.5.5.10.js"></script>
 
 <script src="assets/jquery/jquery-1.10.2.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
